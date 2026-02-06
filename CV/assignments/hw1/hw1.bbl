@@ -1,0 +1,35 @@
+\begin{thebibliography}{1}
+
+\bibitem{shakhnarovich2008nearest}
+G.~Shakhnarovich, T.~Darrell, and P.~Indyk, ``Nearest-neighbor methods in
+  learning and vision,'' {\em IEEE Trans. Neural Networks}, vol.~19, no.~2,
+  p.~377, 2008.
+
+\bibitem{getreuer2011malvar}
+P.~Getreuer, ``Malvar-he-cutler linear image demosaicking,'' {\em Image
+  Processing on Line}, vol.~1, pp.~83--89, 2011.
+
+\bibitem{niu2018low}
+Y.~Niu, J.~Ouyang, W.~Zuo, and F.~Wang, ``Low cost edge sensing for high
+  quality demosaicking,'' {\em IEEE transactions on image processing}, vol.~28,
+  no.~5, pp.~2415--2427, 2018.
+
+\bibitem{zeng2024inheriting}
+H.~Zeng, K.~Feng, J.~Cao, S.~Huang, Y.~Zhao, H.~Luong, J.~Aelterman, and
+  W.~Philips, ``Inheriting bayer’s legacy: Joint remosaicing and denoising
+  for quad bayer image sensor,'' {\em International Journal of Computer
+  Vision}, vol.~132, no.~11, pp.~4992--5013, 2024.
+
+\bibitem{santos2025isp}
+C.~F. G.~d. Santos, R.~R. Arrais, J.~V. S.~d. Silva, M.~H. M.~d. Silva, W.~B.
+  G. d.~A. Neto, L.~T. Lopes, G.~A. Bileki, I.~O. Lima, L.~B. Rondon, B.~M.~d.
+  Souza, {\em et~al.}, ``Isp meets deep learning: a survey on deep learning
+  methods for image signal processing,'' {\em ACM Computing Surveys}, vol.~57,
+  no.~5, pp.~1--44, 2025.
+
+\bibitem{sweet2022opportunities}
+D.~D. Sweet, S.~B. Tirado, N.~M. Springer, C.~N. Hirsch, and C.~D. Hirsch,
+  ``Opportunities and challenges in phenotyping row crops using drone-based rgb
+  imaging,'' {\em The Plant Phenome Journal}, vol.~5, no.~1, p.~e20044, 2022.
+
+\end{thebibliography}
