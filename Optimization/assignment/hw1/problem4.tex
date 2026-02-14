@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\section*{Problem 4: Programming with CVX}
+
+\subsection*{Part 1}
+
+Using CVXPY, I solved the resource allocation problem with $n = 10$, $D = 10$, and $f_i(x_i) = -ix_i$.
+
+\textbf{Results:}
+\begin{itemize}
+    \item Optimal value: $-100.0$
+    \item Optimal allocation: $x_{10} = 10$, and $x_i = 0$ for $i = 1, \ldots, 9$
+\end{itemize}
+
+All resources are allocated to agent 10 because minimizing $\sum_{i} -ix_i$ is equivalent to maximizing $\sum_{i} ix_i$. Since this is a linear program, the optimum lies at a vertex of the feasible polytope, giving everything to the highest-valued agent.
+
+\subsection*{Part 2}
+
+I tested three values of the fairness parameter $\tau$:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c|ccc}
+\toprule
+$i$ & $\tau = 0.1$ & $\tau = 1.0$ & $\tau = 5.0$ \\
+\midrule
+1  & 0.0111 & 0.1095 & 0.4531 \\
+2  & 0.0125 & 0.1229 & 0.4982 \\
+3  & 0.0143 & 0.1401 & 0.5533 \\
+4  & 0.0166 & 0.1630 & 0.6222 \\
+5  & 0.0200 & 0.1947 & 0.7107 \\
+6  & 0.0249 & 0.2418 & 0.8284 \\
+7  & 0.0332 & 0.3189 & 0.9927 \\
+8  & 0.0497 & 0.4681 & 1.2388 \\
+9  & 0.0990 & 0.8803 & 1.6468 \\
+10 & 9.7187 & 7.3608 & 2.4559 \\
+\midrule
+\textbf{Optimal Value} & $-95.97$ & $-80.18$ & $-62.96$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Observations:}
+
+\begin{itemize}
+    \item \textbf{$\tau = 0.1$:} Allocation is nearly identical to Part 1. Agent 10 receives 97.2\% of resources.
+    
+    \item \textbf{$\tau = 1.0$:} Resources spread more evenly. Agent 10 receives 73.6\%, but all agents get non-trivial allocations.
+    
+    \item \textbf{$\tau = 5.0$:} Distribution is much more uniform. Agent 10 receives only 24.6\%.
+\end{itemize}
+
+The log term promotes fairness because $\log(x) \to -\infty$ as $x \to 0^+$, creating an infinite penalty for giving any agent zero resources. Larger $\tau$ strengthens this fairness effect at the cost of lower utility (optimal value moves from $-100$ toward $-63$).
+
+\end{document}

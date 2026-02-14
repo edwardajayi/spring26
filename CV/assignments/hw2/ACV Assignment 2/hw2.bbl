@@ -1,0 +1,41 @@
+\begin{thebibliography}{1}
+
+\bibitem{canny1986computational}
+J.~Canny, ``A computational approach to edge detection,'' {\em IEEE
+  Transactions on pattern analysis and machine intelligence}, no.~6,
+  pp.~679--698, 1986.
+
+\bibitem{beucher1979watersheds}
+S.~Beucher and C.~Lantu{\'e}joul, ``Use of watersheds in contour detection,''
+  in {\em International workshop on image processing: real-time edge and motion
+  detection/estimation}, pp.~2.1--2.12, Rennes, France, 1979.
+
+\bibitem{zuiderveld1994clahe}
+K.~Zuiderveld, ``Contrast limited adaptive histogram equalization,'' in {\em
+  Graphics gems IV}, pp.~474--485, Academic Press, 1994.
+
+\bibitem{duda1972use}
+R.~O. Duda and P.~E. Hart, ``Use of the hough transformation to detect lines
+  and curves in pictures,'' {\em Communications of the ACM}, vol.~15, no.~1,
+  pp.~11--15, 1972.
+
+\bibitem{das2001deskewing}
+A.~K. Das and B.~Chanda, ``An adaptive binarization and skew estimation
+  technique for document images,'' {\em Pattern Recognition Letters}, vol.~22,
+  no.~14, pp.~1565--1573, 2001.
+
+\bibitem{opencv_docs}
+``Opencv: Open source computer vision library.'' \url{https://opencv.org/}.
+\newblock Accessed: 2026-02-13.
+
+\bibitem{oliveira2014medical}
+F.~P. Oliveira and J.~M.~R. Tavares, ``Medical image registration: a review,''
+  {\em Computer Methods in Biomechanics and Biomedical Engineering}, vol.~17,
+  no.~2, pp.~73--93, 2014.
+
+\bibitem{hillel2014lanes}
+A.~B. Hillel, R.~Lerner, D.~Levi, and G.~Raz, ``Recent progress in road and
+  lane detection: a survey,'' {\em Machine Vision and Applications}, vol.~25,
+  no.~3, pp.~727--745, 2014.
+
+\end{thebibliography}

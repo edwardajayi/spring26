@@ -198,7 +198,7 @@
     - Rewrite as: $(-a_2)b_1 + (a_1)b_2 + (0)b_3$
     - Coefficients become Row 3 of matrix: $[-a_2, \quad a_1, \quad 0]$
 
-    ![alt text](image.png)
+    ![alt text](images/image.png)
 
 **Topic:** Example: 2D Line Intersection
 
@@ -242,7 +242,7 @@
     - $1(2) + ... + (-2)(1) = 0$.
     - Values must oppose each other to sum to zero.
 
-    ---![alt text](image-1.png)
+    ---![alt text](images/image-1.png)
 
 **Topic:** Example 2: Parallel Lines Intersection (Points at Infinity)
 
@@ -275,7 +275,7 @@
 
 **Topic:** 2D Translation & Transformation Hierarchy
 
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 
 **Concept Explanation:**
 - **The Hierarchy:** The slide shows how shapes can be distorted in increasingly complex ways:
@@ -305,7 +305,7 @@
 
 **Topic:** Affine Transformations
 
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 
 **Concept Explanation:**
 - **Definition:** A linear transformation (Rotation, Scale, Shear) followed by a Translation.
@@ -337,7 +337,7 @@
 
 **Topic:** Projective Transformations (Homography)
 
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 
 **Concept Explanation:**
 - **Definition:** The general form of linearity in Projective Space. Also called a **Homography**.
@@ -371,7 +371,7 @@
 
 - **Recovering Real (Euclidean) Coordinates:**
 
-![alt text](image-5.png)
+![alt text](images/image-5.png)
   - **The Problem:** The result of $\tilde{x}' = H \tilde{x}$ gives use a homogeneous vector $(\tilde{x}', \tilde{y}', \tilde{w}')$.
   - **The Fix:** To get the actual pixel coordinates $(x', y')$ on the screen, we must **divide by the last component** $\tilde{w}'$.
   - **Formulas:**
@@ -386,7 +386,7 @@
 
 **Topic:** 3D Transformations Summary
 
-![alt text](image-6.png)
+![alt text](images/image-6.png)
 
 **Concept Explanation:**
 - **Overview:** We can extend the 2D hierarchy to 3D space. The matrices become $4 \times 4$ (Homogeneous 3D).
@@ -409,7 +409,7 @@
 
 **Topic: Geometric Image Formation (The Pinhole Camera)**
 
-![alt text](image-7.png)
+![alt text](images/image-7.png)
 
 **Concept Explanation:**
 - **The Setup:**
@@ -472,7 +472,7 @@
   - **Key Takeaway:** Computer Vision is just "High School Optics" done with Matrices. The core rule is: **Divide by Depth ($z$).**
 
 - **Topic: 2D Points (The Visual Intuition)**
-![alt text](image-8.png)
+![alt text](images/image-8.png)
   - **The Diagram Explained:**
     - The image shows a 3D coordinate system origin with a plane floating at distance $w=1$.
     - It distinguishes three specific ways to describe a point:
@@ -515,7 +515,7 @@
 
 - **Topic: Perspective Projection (The Matrix Form)**
 
-![alt text](image-9.png)
+![alt text](images/image-9.png)
   - **The Goal:** Turn the division formula $x = f \frac{X}{Z}$ into a clean Matrix Multiplication (Linear).
   - **The Matrix ($3 \times 4$):**
     $$ M = \begin{bmatrix} f & 0 & 0 & 0 \\ 0 & f & 0 & 0 \\ 0 & 0 & 1 & 0 \end{bmatrix} $$
@@ -559,7 +559,7 @@
     - That's how we trick linear matrices into doing division!
 
 - **Topic: Principal Point Offset (The Coordinate Shift)**
-![alt text](image-10.png)
+![alt text](images/image-10.png)
   - **The Problem:** 
     - In Math (Left Image), the origin $(0,0)$ is in the **Center** of the image plane (where the optical axis hits).
     - This means pixels to the left/bottom are **Negative**.
@@ -573,7 +573,7 @@
   - **Result:** All your pixel coordinates become positive numbers (e.g., $0$ to $1920$).
 
 - **Topic: The Full Model (Camera Intrinsics $K$)**
-![alt text](image-11.png)
+![alt text](images/image-11.png)
   - **The Matrix K (Calibration Matrix):** This $3 \times 3$ matrix contains all the parameters internal to the camera.
     $$ K = \begin{bmatrix} f_x & s & c_x \\ 0 & f_y & c_y \\ 0 & 0 & 1 \end{bmatrix} $$
   - **Vocabulary:** These parameters are called **Camera Intrinsics** (properties of the device itself), as opposed to "Extrinsics" (where the camera is in the room).
@@ -635,7 +635,7 @@
   - **Verdict:** By adding the offset, you redefine where "zero" is, so everything fits on the screen.
 
 - **Topic: Chaining Transformations (The Full Pipeline)**
-![alt text](image-13.png)
+![alt text](images/image-13.png)
   - **The Goal:** Map a point in the **World Coordinate System** to a pixel in the **Image Coordinate System**.
   - **The Pipeline (Two Steps):**
     1.  **World $\rightarrow$ Camera (Extrinsics):**
@@ -679,7 +679,7 @@
     - **Conclusion:** For "Extrinsics" (Camera Pose), we **ONLY** use Euclidean Transformations ($R + t$). We never use Affine or Projective transforms for the camera position itself.
 
 - **Topic: Magnification & Depth**
-![alt text](image-13.png)
+![alt text](images/image-13.png)
   - **The Formula:**
     $$ m = \frac{f}{z} $$
   - **What it means:**
@@ -731,7 +731,7 @@
     - It is perpendicular to the Optical Axis (Z-axis).
 
 - **Topic: Vanishing Points (Where Parallel Lines Meet)**
-![alt text](image-14.png)
+![alt text](images/image-14.png)
   - **The Phenomenon:**
     - In the Real World (3D), standard railroad tracks are **Parallel**. They never touch.
     - In the Image (2D), the tracks appear to converge and meet at a single point in the distance.
@@ -742,7 +742,7 @@
   - **Key Insight:** This proves that Perspective Projection **DOES NOT preserve parallelism**. (Unlike Affine, which does).
 
 - **Topic: Calculating the Vanishing Point**
-![alt text](image-15.png)
+![alt text](images/image-15.png)
   - **The Question:** "Where exactly will these parallel lines meet?"
   - **The Math:**
     - A line in 3D has a direction vector $\mathbf{v} = (l_x, l_y, l_z)$.
@@ -756,7 +756,7 @@
 
 - **Topic: Real Lenses (Physics)**
 
-![alt text](image-16.png)
+![alt text](images/image-16.png)
   - **Why not just use a Pinhole?** Pinholes let in too little light. We need a glass lens to gather light.
   - **The Law:** "Thin Lens Equation"
     $$ \frac{1}{d_i} + \frac{1}{d_o} = \frac{1}{f} $$
@@ -775,11 +775,20 @@
       - **In Computer Vision:** We usually assume the focus is fixed (or at infinity), so $f$ is treated as a **Constant Intrinsic**.
 
 - **Topic: Real Lens Artifacts (The Bad Stuff)**
-![alt text](image-17.png) ![alt text](image-18.png) ![alt text](image-19.png)
+![alt text](images/image-17.png) ![alt text](images/image-18.png) ![alt text](images/image-19.png) ![alt text](images/image-27.png)
   - **1. Lens Defocus (Blur Circle):**
     - **Cause:** Finite Aperture (Hole is too big).
     - Light rays from a point don't meet perfectly at the sensor. They form a circle instead of a dot.
     - **Result:** Objects at the wrong depth look blurry ($d_o$ doesn't match equation).
+    - **Deep Dive: The "Circle of Confusion" (Diagram):**
+      - Look at the **Blue Rays** (Middle Tree Point):
+      - They converge ("Focus") **before** they hit the film (sensor).
+      - They cross over and spread out again.
+      - Result: Instead of a sharp dot, they hit the sensor as a large **Circle** (The Circle of Confusion).
+      - This is simply what "Out of Focus" means physically.
+
+  - **2. Chromatic Aberration (Color Fringing):**
+    - **Cause:** Physics of Glass.
   
   - **2. Chromatic Aberration (Color Fringing):**
     - **Cause:** Physics of Glass.
@@ -796,7 +805,7 @@
 ### Part 3: Photometric Image Formation (Intensity)
 
 - **Topic: The Big Shift (Geometry $\rightarrow$ Photometry)**
-![alt text](image-20.png)
+![alt text](images/image-20.png)
   - **Previous Topic (Geometry):** "Where does this point determine land on the image?" $(x,y)$.
   - **New Topic (Photometry):** "How BRIGHT and what COLOR is that pixel?" $(R,G,B)$.
   - **The Three Players:**
@@ -805,7 +814,7 @@
     3.  **Sensor:** Collection. Turning photons into electrons (Intensity).
 
 - **Topic: The Rendering Equation (The Physics of Light)**
-<!-- ![alt text](image-21.png) -->
+<!-- ![alt text](images/image-21.png) -->
   - **The "Grand Unifying Theory" of Computer Graphics.**
   - **The Equation:**
     $$ L_{out}(v) = L_{emit} + \int_{\Omega} \text{BRDF} \cdot L_{in}(s) \cdot \cos(\theta) \cdot ds $$
@@ -820,7 +829,7 @@
     5.  **$-n^T s$ (The Cosine Term):** Geometry penalty. Light hitting at a steep angle is weaker. (Sun at sunset is weaker than noon).
 
 - **Topic: Global Illumination (Bouncing Light)**
-![alt text](image-21.png)
+![alt text](images/image-21.png)
   - **The Problem with "Direct Illumination" (Left Image):**
     - If expected light only bounces ONCE (Source $\rightarrow$ Object $\rightarrow$ Eye), shadows are **Pitch Black**.
     - In reality, shadows are rarely black. Why?
@@ -832,7 +841,7 @@
   - **Key Takeaway:** The "Integral" in the Rendering Equation is hard because $L_{in}$ comes from everywhere, including other objects!
 
 - **Topic: BRDF Components (Diffuse vs Specular)**
-![alt text](image-23.png)
+![alt text](images/image-22.png)
   - **1. Diffuse Reflection (Matte):**
     - **Behavior:** Light hits and scatters **Equally** in all directions.
     - **Example:** Paper, Wall, Chalk.
@@ -845,6 +854,209 @@
   
   - **3. Mirror (Ideal Specular):**
     - The extreme version where scatter is zero. Perfect reflection.
+
+- **Topic: The Image Sensor Pipeline (From Light to JPEG)**
+![alt text](images/image-23.png)
+  - **Stage 1: The Physics (Camera Body)**
+    - **Optics/Aperture:** Gather and focus light.
+    - **Shutter:** Determines *how long* light hits the sensor (Exposure Time).
+  
+  - **Stage 2: The Electronics (Sensor Chip)**
+    - **Sensor (CCD/CMOS):** The bucket that catches photons.
+    - **Gain (ISO):** Amplifies the signal (making it brighter, but noisier).
+    - **ADC (Analog-to-Digital Converter):** Converts voltage to numbers (0s and 1s).
+    - **Output:** **RAW Image** (Unprocessed, high quality data).
+  
+  - **Stage 3: The Processing (ISP - Image Signal Processor)**
+    - **Demosaic:** Guessing colors. (Sensors only see R, G, or B in a mosaic pattern. We must interpolate the missing colors).
+    - **Denoise/Sharpen:** Cleaning up the ISO grain.
+    - **White Balance:** Adjusting colors so white looks white (removing warm/cool tint).
+    - **Gamma/Curve:** Brightening the darks so humans can see them clearly.
+    - **Compress:** Throwing away data to save space.
+    - **Output:** **JPEG** (Final image).
+
+- **Deep Dive: Sensor Types (CCD vs CMOS)**
+![alt text](images/image-24.png)
+  - **1. CCD (Charge Coupled Device) - The "Bucket Brigade":**
+    - **How it works:** Photons turn into charge. The charge is shifted from pixel to pixel until it reaches the end of the row to be read.
+    - **Analogy:** Firefighters passing buckets of water down a line.
+    - **Pros/Cons:** Very clean signal (low noise), but Slow and Expensive. (Used in old telescopes/cameras).
+  
+  - **2. CMOS (Complementary Metal Oxide Semiconductor) - The Modern Standard:**
+    - **How it works:** Each pixel has its own little brain (amplifier). It converts photon $\rightarrow$ voltage **right there**.
+    - **Analogy:** Everyone has their own hose.
+    - **Pros/Cons:** Extremely Fast, Cheap to make, slightly more noise (historically), but now the winner.
+    - **Pros/Cons:** Extremely Fast, Cheap to make, slightly more noise (historically), but now the winner.
+    - **Verdict:** Virtually every camera you own (Phone, DSLR, Webcam) is **CMOS**.
+
+---
+
+### Checkpoint: The "Too Long; Didn't Read" (What you actually use in code)
+
+**"I'm overwhelmed by the Physics. What do I actually need to code?"**
+
+1.  **Geometry ($P = K [R|t]$):**
+    - **Crucial.** You WILL code this.
+    - Just remember: 3D point $\rightarrow$ Multiply by Extrinsics $\rightarrow$ Multiply by Intrinsics $\rightarrow$ Divide by $z$ $\rightarrow$ 2D Pixel.
+
+2.  **Lenses (Defocus, Aberration):**
+    - **Rarely Coded.**
+    - Usually, we run a "Calibration" script once (using a checkerboard) to find parameters $k_1, k_2$ that "undistort" the image.
+    - Then we pretend we have a perfect Pinhole Camera forever.
+
+3.  **Photometry (The Rendering Equation):**
+    - **Almost Never Coded (in CV).**
+    - We don't solve integrals. We just treat pixel values $(0-255)$ as "Pattern Descriptors".
+    - Exception: "Inverse Rendering" or "Shape from Shading".
+
+4.  **Sensors (CCD/CMOS/Bayer):**
+    - **Never Coded.**
+    - You just read a JPEG or PNG array. The camera did the work for you.
+    - **Takeaway:** Just know that `img[y,x]` gives you an intensity.
+
+- **Topic: Color Filters (How Cameras See Color)**
+![alt text](images/image-26.png)
+  - **The Lie:** You think your camera sees RGB at every pixel.
+  - **The Truth:** Sensors are colorblind (they only count photons).
+  - **The Solution: The Bayer Filter:**
+    - We put a tiny colored glass over every pixel.
+    - **Pattern:** RGGB (Red, Green, Green, Blue).
+    - **Why more Green?** The human eye is more sensitive to green (evolution). We need more detail there.
+  - **Demosaicing (Interpolation):**
+    - The camera software guesses the missing colors.
+    - Example: At a Red pixel, it takes the average of the Green/Blue neighbors to fill in the G and B values.
+
+    
+
+---
+
+- **Topic: Adding a Lens (The Circle of Confusion)**
+![alt text](images/image-25.png)
+  - **The Concept:**
+    - A lens focuses light from a specific distance ($d_o$) onto the film plane ($d_i$) according to the equation $\frac{1}{d_i} + \frac{1}{d_o} = \frac{1}{f}$.
+  
+  - **In Focus (Red Rays - Top of Tree):**
+    - The object is at the correct distance.
+    - The rays converge exactly **ON** the film plane.
+    - Result: A sharp point.
+  
+  - **Out of Focus (Blue Rays - Middle of Tree):**
+    - This part of the tree is closer/further than the perfect focus distance.
+    - The rays converge **BEFORE** (or after) the film plane.
+    - By the time they hit the sensor, they have crossed and spread out again.
+    - **The Circle of Confusion:** The "blob" of light that hits the sensor instead of a point. This is why the image is blurry.
+    - **Key Takeaway:** Only one depth plane is perfectly in focus. Everything else is a circle of confusion (Depth of Field).
+
+  - **FAQ: Why did the Blue rays fail? (The Focus Trade-off)**
+    - **1. Is it because it's in the middle?**
+      - **NO.** It's not about being "up" or "down".
+      - Detailed Answer: The diagram implies the Blue point is at a **different distance (depth)** from the lens than the Red point. (Imagine the tree is 3D and that branch is poking out towards you).
+      - Physics Rule: Different Depth ($d_o$) $\rightarrow$ Different Focus Point ($d_i$).
+    
+    - **2. Can we move the film to fix the Blue rays?**
+      - **YES.** If you move the film sensor *back* (away from lens), you will catch the Blue rays exactly where they cross. Ideally sharp.
+    
+    - **3. But what happens to the Red rays then?**
+      - **They break.**
+      - Since the Red rays were *already* converged, if you move the film back, they will cross *early* and then spread out again.
+      - **Result:** Now the Blue is Sharp, and the Red is Blurry.
+      - **The Hard Truth:** You cannot focus on usually close things (Blue) and far things (Red) at the same time. You have to pick one.
+
+- **Topic: Depth of Field (DOF) - The Zone of Sharpness**
+
+![Depth of Field Diagram](uploaded_media_1769952160658.png)
+
+  - **Definition:**
+    - Depth of Field (DOF) refers to the **range of distances** within a scene that appears **acceptably sharp** in a photograph.
+    - In other words, it's the area in front of and behind the main subject that is in focus.
+    - Think of it as a "slice" of the 3D world that will look sharp on your 2D image.
+
+  - **The Diagram Explained:**
+    - The diagram shows light rays (green lines) passing through an **aperture** (the black vertical opening) and a **lens** (blue oval).
+    - Objects within the DOF zone have their light rays converge close enough to the sensor to appear sharp.
+    - Objects outside this zone create a "Circle of Confusion" instead of a sharp point.
+
+  - **Key Relationship: Aperture Size vs DOF:**
+    | Aperture | DOF | Effect | Use Case |
+    | :--- | :--- | :--- | :--- |
+    | **Large (Wide Open)** e.g., $f/1.4$ | **Shallow** | Thin slice sharp, background very blurry | Portraits, isolating subjects |
+    | **Small (Narrow)** e.g., $f/16$ | **Deep** | Most of scene sharp | Landscapes, group photos |
+
+  - **Why Does Aperture Affect DOF?**
+    - **Large Aperture:** Light rays enter at many different angles. Off-focus rays spread more $\rightarrow$ bigger blur circle.
+    - **Small Aperture:** Light rays are more "parallel" (restricted angles). Off-focus rays spread less $\rightarrow$ smaller blur circle.
+    - Extreme case: **Pinhole camera** (infinitely small aperture) = **Infinite DOF** (everything is in focus, but very dark).
+
+  - **Visual Example: Aperture Comparison**
+
+![DOF Aperture Comparison](uploaded_media_1769961921761.png)
+
+    | Setting | Aperture Size | Light Cone | Result |
+    | :--- | :--- | :--- | :--- |
+    | **$f/5.6$** (Top) | Large (Wide) | Wide cone, rays spread | Shallow DOF — Background blurry |
+    | **$f/32$** (Bottom) | Small (Narrow) | Narrow cone, rays parallel | Deep DOF — Background sharp |
+
+    - **Key Takeaway:** Smaller aperture (higher f-number) $\rightarrow$ More of the scene is in focus.
+    - *(Source: Richard Szeliski, UW Computer Vision Course)*
+
+  - **Other Factors Affecting DOF:**
+    1.  **Focal Length ($f$):** Longer focal length (telephoto) $\rightarrow$ Shallower DOF.
+    2.  **Subject Distance:** Closer to subject $\rightarrow$ Shallower DOF.
+    3.  **Sensor Size:** Larger sensor $\rightarrow$ Shallower DOF (for same framing).
+
+  - **Connection to Circle of Confusion:**
+    - An object is considered "in focus" if its Circle of Confusion (CoC) is smaller than a threshold (typically 1 pixel or less).
+    - **DOF is the range of depths where CoC < Threshold**.
+
+  - **Computer Vision Application:**
+    - **Depth from Defocus:** By measuring how blurry objects are (size of CoC), we can estimate their depth.
+    - **Focus Stacking:** Taking multiple photos at different focus distances and combining them for a large DOF.
+    - **Bokeh Detection:** AI portrait modes detect faces and artificially blur backgrounds to simulate shallow DOF.
+
+---
+
+- **Topic: Sampling and Quantization in Digital Imaging**
+
+![Continuous Image Model](uploaded_media_0_1769962502249.png)
+
+![From Continuous to Digital](uploaded_media_1_1769962502249.png)
+
+  - **The Problem: Continuous vs Digital**
+    - The real world scene projected onto the image plane is a **continuous function**: $f(x,y)$ where $(x,y) \in \mathbb{R}^2$.
+    - **Continuous Image Properties:**
+      - Infinite spatial resolution (zoom in forever).
+      - Infinite intensity precision (brightness = any real number).
+    - **The Issue:** Computers cannot store infinite precision. We need discrete values.
+
+  - **The Pipeline: Continuous → Digital**
+    $$ f(x,y) \xrightarrow{\text{sampling}} f[m,n] \xrightarrow{\text{quantization}} \hat{f}[m,n] $$
+
+    | Step | What it Does | Conversion |
+    | :--- | :--- | :--- |
+    | **Sampling** | Discretizes **SPACE** | $(x,y) \in \mathbb{R}^2 \rightarrow [m,n] \in \mathbb{Z}^2$ (pixel grid) |
+    | **Quantization** | Discretizes **INTENSITY** | Brightness $\in \mathbb{R} \rightarrow$ Integer $\in \{0, 1, ..., 255\}$ |
+
+  - **Intuition:**
+    - **Sampling** = Chopping the image into a grid of **pixels** (e.g., $1920 \times 1080$).
+    - **Quantization** = Rounding each pixel's brightness to a **discrete level** (e.g., 8-bit = 256 levels).
+
+  - **Notation Change:**
+    - **Continuous:** $f(x,y)$ uses parentheses $(\ )$ — real number inputs.
+    - **Discrete:** $f[m,n]$ uses brackets $[\ ]$ — integer indices.
+    - **Quantized:** $\hat{f}[m,n]$ — the "hat" indicates the final digital approximation.
+
+  - **Why This Matters:**
+    - **Resolution** (sampling) determines how much detail you capture (pixels).
+    - **Bit Depth** (quantization) determines how many brightness levels (dynamic range).
+    - Common: 8-bit (256 levels), 10-bit (1024 levels), 12-bit RAW (4096 levels).
+
+---
+
+---
+
+---
+
+---
 
 ---
 
