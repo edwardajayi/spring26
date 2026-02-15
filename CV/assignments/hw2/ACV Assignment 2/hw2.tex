@@ -144,7 +144,7 @@ Counting objects is useful in various domains:
 \end{itemize}
 
 \subsection{Bonus: Evaluating Image-Based Object Counting on Video}
-We applied the naive object counting pipeline to a video sequence (\texttt{Assets/bonus\_output.mp4}) containing 3--5 objects.
+We applied the naive object counting pipeline to a video sequence containing 3--5 objects.
 \begin{itemize}
     \item \textbf{Observations:} The count fluctuates significantly as objects move or lighting changes. The count is rarely stable.
     \item \textbf{Limitations Identified:}
@@ -317,7 +317,7 @@ While our pipeline works well for structured grids, several limitations were obs
 
     \item \textbf{Non-rectilinear structures:} The algorithm snaps to the nearest cardinal axis ($0^\circ$, $90^\circ$, $180^\circ$). For objects intentionally at $45^\circ$ (e.g., a diamond shape), the algorithm would incorrectly ``correct'' a valid orientation.
 
-    \item \textbf{Border artifacts:} After rotation, image corners contain regions outside the original frame. Using \texttt{cv2.BORDER\_REPLICATE} fills these with edge pixels, which can create visual artifacts. Cropping to the largest inscribed rectangle would solve this but reduces the field of view.
+    \item \textbf{Border artifacts:} After rotation, image corners contain regions outside the original frame. Using border replication fills these with edge pixels, which can create visual artifacts. Cropping to the largest inscribed rectangle would solve this but reduces the field of view.
 \end{enumerate}
 
 \subsection{Other Real-World Scenarios for Image Alignment}
@@ -369,21 +369,21 @@ We tested the algorithm on two distinct images from the \texttt{q3\_data} datase
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.9\textwidth]{comparison_q3a.png}
-    \caption{Compression results for the high-resolution satellite image (\texttt{q3a.jpg}). Left: Original. Center: Log-Magnitude Spectrum. Right: Compressed image retaining top 10\% of coefficients.}
+    \caption{Compression results for the high-resolution satellite image. Left: Original. Center: Log-Magnitude Spectrum. Right: Compressed image retaining top 10\% of coefficients.}
     \label{fig:q3_satellite}
 \end{figure}
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.9\textwidth]{comparison_q3b.png}
-    \caption{Compression results for the low-frequency image (\texttt{q3b.jpg}). The compressed version retains high fidelity even with significant data removal.}
+    \caption{Compression results for the low-frequency image. The compressed version retains high fidelity even with significant data removal.}
     \label{fig:q3_lowfreq}
 \end{figure}
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.9\textwidth]{comparison_sat_img1.png}
-    \caption{Compression results for the newly acquired satellite image (\texttt{sat\_img1.jpg}). The algorithm preserves large-scale features while achieving compression.}
+    \caption{Compression results for the newly acquired satellite image. The algorithm preserves large-scale features while achieving compression.}
     \label{fig:q3_sat_img1}
 \end{figure}
 
@@ -450,7 +450,7 @@ We applied these augmentations to the chessboard image (\texttt{2a.jpg}). The re
         \includegraphics[width=\linewidth]{q4_shear_y.jpg}
         \caption{Shear Y}
     \end{subfigure}
-    \caption{Data augmentation results applied to \texttt{2a.jpg}.}
+    \caption{Data augmentation results applied to the image.}
     \label{fig:q4_results}
 \end{figure}
 
@@ -466,13 +466,13 @@ When applying augmentations to a dataset labeled ``Face'', we must consider if t
 \subsection{Other Transforms}
 Two other transforms not included in the starter code that are highly relevant for face recognition:
 \begin{itemize}
-    \item \textbf{Photometric Distortion (Brightness/Contrast):} Adjusting brightness and contrast is crucial~cite{sun2005geometric} because face recognition systems must be robust to varying lighting conditions, such as shadows, indoor/outdoor transitions, and overexposure.
-    \item \textbf{Random Occlusion (Cutout):} Simulating partial occlusion~\cite{fong2019occlusions} (e.g., by masking out random rectangular regions) is essential for training models to recognize faces that may be partially covered by accessories like sunglasses, medical masks, or microphones.
+    \item \textbf{Photometric Distortion (Brightness/Contrast):} Adjusting brightness and contrast is crucial because face recognition systems must be robust to varying lighting conditions\cite{sun2005geometric}, such as shadows, indoor/outdoor transitions, and overexposure.
+    \item \textbf{Random Occlusion (Cutout):} Simulating partial occlusion\cite{fong2019occlusions} (e.g., by masking out random rectangular regions) is essential for training models to recognize faces that may be partially covered by accessories like sunglasses, medical masks, or microphones.
 \end{itemize}
 
 \newpage
 \bibliographystyle{ieeetr}
-\nocite{*}
+% \nocite{*}
 \bibliography{references}
 
 \end{document}

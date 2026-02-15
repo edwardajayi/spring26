@@ -55,6 +55,11 @@ P.~Y. Simard, D.~Steinkraus, J.~C. Platt, {\em et~al.}, ``Best practices for
   convolutional neural networks applied to visual document analysis,'' in {\em
   Icdar}, vol.~3, pp.~958--962, 2003.
 
+\bibitem{fong2019occlusions}
+R.~Fong, M.~Patrick, and A.~Vedaldi, ``Understanding deep networks via extremal
+  perturbations and smooth masks,'' in {\em Proceedings of the IEEE/CVF
+  International Conference on Computer Vision (ICCV)}, pp.~2950--2958, 2019.
+
 \bibitem{cooley1965algorithm}
 J.~W. Cooley and J.~W. Tukey, ``An algorithm for the machine calculation of
   complex fourier series,'' {\em Mathematics of computation}, vol.~19, no.~90,
