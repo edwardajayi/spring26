@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.2.5)  14 FEB 2026 19:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.2.5)  15 FEB 2026 17:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -175,6 +175,13 @@ File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen166
 \Gin@req@width=\dimen167
+)
+(C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex/latex/grffile\grffile
+.sty
+Package: grffile 2019/11/11 v2.1 Extended file name support for graphics (legac
+y)
+Package grffile Info: This package is an empty stub for compatibility on input 
+line 40.
 )
 (C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperr
 ef.sty
@@ -434,7 +441,7 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 )
 LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 5
-0.
+1.
 
 (C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ppl.f
 d
@@ -447,24 +454,24 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 ) (hw2.aux)
 \openout1 = `hw2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -526,7 +533,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 df-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 50.
+Package hyperref Info: Link coloring OFF on input line 51.
  (hw2.out) (hw2.out)
 \@outlinefile=\write3
 \openout3 = `hw2.out'.
@@ -536,40 +543,40 @@ Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count330
 LaTeX Font Info:    Trying to load font information for OML+zplm on input line 
-53.
+54.
 
 (C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlzplm.
 fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
-53.
+54.
 
 (C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omszplm.
 fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 
-53.
+54.
 
 (C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omxzplm.
 fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 15.0049pt on input line 53.
+(Font)              scaled to size 15.0049pt on input line 54.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 53.
+(Font)              scaled to size 10.42007pt on input line 54.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 53.
+(Font)              scaled to size 8.33606pt on input line 54.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 15.0049pt on input line 53.
+(Font)              scaled to size 15.0049pt on input line 54.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 53.
+(Font)              scaled to size 10.42007pt on input line 54.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 53.
+(Font)              scaled to size 8.33606pt on input line 54.
 LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
-53.
+54.
 
 (C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1zplm.
 fd
@@ -579,199 +586,248 @@ File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 {C:/Users/Administrator/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Us
 ers/Administrator/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 66.
+(Font)              scaled to size 12.50409pt on input line 67.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 66.
+(Font)              scaled to size 9.37807pt on input line 67.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 66.
+(Font)              scaled to size 7.29405pt on input line 67.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 66.
+(Font)              scaled to size 12.50409pt on input line 67.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 66.
+(Font)              scaled to size 9.37807pt on input line 67.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 66.
-<Assets/q1_results.png, id=127, 796.9775pt x 305.14pt>
-File: Assets/q1_results.png Graphic file (type png)
-<use Assets/q1_results.png>
-Package pdftex.def Info: Assets/q1_results.png  used on input line 75.
+(Font)              scaled to size 7.29405pt on input line 67.
+<./Assets/q1_results.png, id=127, 796.9775pt x 305.14pt>
+File: ./Assets/q1_results.png Graphic file (type png)
+<use ./Assets/q1_results.png>
+Package pdftex.def Info: ./Assets/q1_results.png  used on input line 76.
 (pdftex.def)             Requested size: 469.75502pt x 179.8541pt.
 
-Overfull \hbox (58.15613pt too wide) in paragraph at lines 85--92
+Overfull \hbox (58.15613pt too wide) in paragraph at lines 86--93
  [][] 
  []
 
 [2 <./Assets/q1_results.png>]
-<Assets/q1_watershed.png, id=146, 796.9775pt x 305.14pt>
-File: Assets/q1_watershed.png Graphic file (type png)
-<use Assets/q1_watershed.png>
-Package pdftex.def Info: Assets/q1_watershed.png  used on input line 98.
+<./Assets/q1_watershed.png, id=146, 796.9775pt x 305.14pt>
+File: ./Assets/q1_watershed.png Graphic file (type png)
+<use ./Assets/q1_watershed.png>
+Package pdftex.def Info: ./Assets/q1_watershed.png  used on input line 99.
 (pdftex.def)             Requested size: 469.75502pt x 179.8541pt.
+<./Assets/q1_realworld_clips.png, id=147, 733.74126pt x 426.59375pt>
+File: ./Assets/q1_realworld_clips.png Graphic file (type png)
+<use ./Assets/q1_realworld_clips.png>
+Package pdftex.def Info: ./Assets/q1_realworld_clips.png  used on input line 11
+0.
+(pdftex.def)             Requested size: 225.4804pt x 131.09055pt.
+
+Underfull \hbox (badness 2856) in paragraph at lines 111--111
+[]\OT1/ppl/m/n/10.95 (a) |Ex-per-i-ment 1: Clothes Clips (In-flated
+ []
+
+<./Assets/q1_realworld_objects.png, id=148, 796.9775pt x 289.08pt>
+File: ./Assets/q1_realworld_objects.png Graphic file (type png)
+<use ./Assets/q1_realworld_objects.png>
+Package pdftex.def Info: ./Assets/q1_realworld_objects.png  used on input line 
+116.
+(pdftex.def)             Requested size: 225.4804pt x 81.78435pt.
 LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 1
-06.
+25.
 
 (C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ppl.f
 d
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-) [3 <./Assets/q1_watershed.png>]
-Overfull \hbox (2.67865pt too wide) in paragraph at lines 130--131
+) [3 <./Assets/q1_watershed.png> <./Assets/q1_realworld_clips.png> <./Assets/q1
+_realworld_objects.png>]
+Overfull \hbox (22.88069pt too wide) in paragraph at lines 147--148
+\OT1/ppl/m/n/12 We ap-plied the naive ob-ject count-ing pipeline to a video se-
+quence (\OT1/cmtt/m/n/12 Assets/bonus[]output.mp4\OT1/ppl/m/n/12 )
+ []
+
+
+Overfull \hbox (2.67865pt too wide) in paragraph at lines 149--150
 []\OT1/ppl/b/n/12 Observations: \OT1/ppl/m/n/12 The count fluc-tu-ates sig-nif-
 i-cantly as ob-jects move or light-ing changes.
  []
 
 
-Overfull \hbox (6.50906pt too wide) in paragraph at lines 133--134
+Overfull \hbox (6.50906pt too wide) in paragraph at lines 152--153
 []\OT1/ppl/b/n/12 Temporal In-sta-bil-ity: \OT1/ppl/m/n/12 The al-go-rithm pro-
 cesses each frame in-de-pen-dently. Noise
  []
 
-[4]
-Overfull \hbox (7.19128pt too wide) in paragraph at lines 152--154
+[4] [5]
+Overfull \hbox (7.19128pt too wide) in paragraph at lines 171--173
 \OT1/ppl/m/n/12 re-flec-tions. We used Con-trast Lim-ited Adap-tive His-togram 
 Equal-iza-tion (CLAHE) [[]]
  []
 
-[5]
-<linesDetected2a.jpg, id=187, 3035.34pt x 4047.12pt>
+[6]
+<linesDetected2a.jpg, id=196, 3035.34pt x 4047.12pt>
 File: linesDetected2a.jpg Graphic file (type jpg)
 <use linesDetected2a.jpg>
-Package pdftex.def Info: linesDetected2a.jpg  used on input line 232.
+Package pdftex.def Info: linesDetected2a.jpg  used on input line 251.
 (pdftex.def)             Requested size: 150.32504pt x 200.39172pt.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 233.
+(Font)              scaled to size 11.40997pt on input line 252.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 233.
+(Font)              scaled to size 6.25204pt on input line 252.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 233.
+(Font)              scaled to size 11.40997pt on input line 252.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 233.
-<linesDetected2b.jpg, id=188, 3035.34pt x 4047.12pt>
+(Font)              scaled to size 6.25204pt on input line 252.
+<linesDetected2b.jpg, id=197, 3035.34pt x 4047.12pt>
 File: linesDetected2b.jpg Graphic file (type jpg)
 <use linesDetected2b.jpg>
-Package pdftex.def Info: linesDetected2b.jpg  used on input line 237.
+Package pdftex.def Info: linesDetected2b.jpg  used on input line 256.
 (pdftex.def)             Requested size: 150.32504pt x 200.39172pt.
-<linesDetected2c.jpg, id=189, 3035.34pt x 4047.12pt>
+<linesDetected2c.jpg, id=198, 3035.34pt x 4047.12pt>
 File: linesDetected2c.jpg Graphic file (type jpg)
 <use linesDetected2c.jpg>
-Package pdftex.def Info: linesDetected2c.jpg  used on input line 242.
+Package pdftex.def Info: linesDetected2c.jpg  used on input line 261.
 (pdftex.def)             Requested size: 150.32504pt x 200.39172pt.
- [6]
-<rotated_image_2a.jpg, id=199, 2185.4448pt x 2913.9264pt>
+ [7]
+<rotated_image_2a.jpg, id=209, 2185.4448pt x 2913.9264pt>
 File: rotated_image_2a.jpg Graphic file (type jpg)
 <use rotated_image_2a.jpg>
-Package pdftex.def Info: rotated_image_2a.jpg  used on input line 252.
+Package pdftex.def Info: rotated_image_2a.jpg  used on input line 271.
 (pdftex.def)             Requested size: 150.32504pt x 200.3942pt.
-<rotated_image_2b.jpg, id=200, 2185.4448pt x 2913.9264pt>
+<rotated_image_2b.jpg, id=210, 2185.4448pt x 2913.9264pt>
 File: rotated_image_2b.jpg Graphic file (type jpg)
 <use rotated_image_2b.jpg>
-Package pdftex.def Info: rotated_image_2b.jpg  used on input line 257.
+Package pdftex.def Info: rotated_image_2b.jpg  used on input line 276.
 (pdftex.def)             Requested size: 150.32504pt x 200.3942pt.
-<rotated_image_2c.jpg, id=201, 2185.4448pt x 2913.9264pt>
+<rotated_image_2c.jpg, id=211, 2185.4448pt x 2913.9264pt>
 File: rotated_image_2c.jpg Graphic file (type jpg)
 <use rotated_image_2c.jpg>
-Package pdftex.def Info: rotated_image_2c.jpg  used on input line 262.
+Package pdftex.def Info: rotated_image_2c.jpg  used on input line 281.
 (pdftex.def)             Requested size: 150.32504pt x 200.3942pt.
-<linesDetectedcube.jpg, id=202, 2253.41875pt x 1592.95125pt>
+<linesDetectedcube.jpg, id=212, 2253.41875pt x 1592.95125pt>
 File: linesDetectedcube.jpg Graphic file (type jpg)
 <use linesDetectedcube.jpg>
-Package pdftex.def Info: linesDetectedcube.jpg  used on input line 275.
+Package pdftex.def Info: linesDetectedcube.jpg  used on input line 294.
 (pdftex.def)             Requested size: 211.38832pt x 149.41173pt.
-<rotated_image_cube.jpg, id=203, 1622.4615pt x 1146.9249pt>
+<rotated_image_cube.jpg, id=213, 1622.4615pt x 1146.9249pt>
 File: rotated_image_cube.jpg Graphic file (type jpg)
 <use rotated_image_cube.jpg>
-Package pdftex.def Info: rotated_image_cube.jpg  used on input line 280.
+Package pdftex.def Info: rotated_image_cube.jpg  used on input line 299.
 (pdftex.def)             Requested size: 211.38832pt x 149.42047pt.
- [7 <./linesDetected2a.jpg> <./linesDetected2b.jpg> <./linesDetected2c.jpg> <./
-rotated_image_2a.jpg> <./rotated_image_2b.jpg> <./rotated_image_2c.jpg>] [8 <./
+ [8 <./linesDetected2a.jpg> <./linesDetected2b.jpg> <./linesDetected2c.jpg> <./
+rotated_image_2a.jpg> <./rotated_image_2b.jpg> <./rotated_image_2c.jpg>] [9 <./
 linesDetectedcube.jpg> <./rotated_image_cube.jpg>]
-Overfull \hbox (15.5542pt too wide) in paragraph at lines 316--317
+Overfull \hbox (15.5542pt too wide) in paragraph at lines 335--336
 []\OT1/ppl/b/n/12 Architectural pho-tog-ra-phy: \OT1/ppl/m/n/12 Cor-rect-ing pe
 r-spec-tive dis-tor-tion in build-ing pho-tographs
  []
 
-[9]
+[10]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 346.
-<Assets/comparison_q3a.png, id=241, 1084.05pt x 361.35pt>
-File: Assets/comparison_q3a.png Graphic file (type png)
-<use Assets/comparison_q3a.png>
-Package pdftex.def Info: Assets/comparison_q3a.png  used on input line 352.
-(pdftex.def)             Requested size: 469.75502pt x 156.58498pt.
- [10]
-<Assets/comparison_q3b.png, id=251, 1084.05pt x 361.35pt>
-File: Assets/comparison_q3b.png Graphic file (type png)
-<use Assets/comparison_q3b.png>
-Package pdftex.def Info: Assets/comparison_q3b.png  used on input line 359.
-(pdftex.def)             Requested size: 469.75502pt x 156.58498pt.
-<Assets/comparison_sat_img1.png, id=252, 1084.05pt x 361.35pt>
-File: Assets/comparison_sat_img1.png Graphic file (type png)
-<use Assets/comparison_sat_img1.png>
-Package pdftex.def Info: Assets/comparison_sat_img1.png  used on input line 366
-.
-(pdftex.def)             Requested size: 469.75502pt x 156.58498pt.
- [11 <./Assets/comparison_q3a.png> <./Assets/comparison_q3b.png>]
-Overfull \hbox (4.935pt too wide) in paragraph at lines 374--375
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 365.
+<./Assets/comparison_q3a.png, id=251, 956.1321pt x 354.123pt>
+File: ./Assets/comparison_q3a.png Graphic file (type png)
+<use ./Assets/comparison_q3a.png>
+Package pdftex.def Info: ./Assets/comparison_q3a.png  used on input line 371.
+(pdftex.def)             Requested size: 422.77664pt x 156.58188pt.
+<./Assets/comparison_q3b.png, id=252, 1069.596pt x 368.577pt>
+File: ./Assets/comparison_q3b.png Graphic file (type png)
+<use ./Assets/comparison_q3b.png>
+Package pdftex.def Info: ./Assets/comparison_q3b.png  used on input line 378.
+(pdftex.def)             Requested size: 422.77664pt x 145.69035pt.
+<./Assets/comparison_sat_img1.png, id=253, 1076.1003pt x 202.356pt>
+File: ./Assets/comparison_sat_img1.png Graphic file (type png)
+<use ./Assets/comparison_sat_img1.png>
+Package pdftex.def Info: ./Assets/comparison_sat_img1.png  used on input line 3
+85.
+(pdftex.def)             Requested size: 422.77664pt x 79.49901pt.
+ [11]
+Overfull \hbox (4.935pt too wide) in paragraph at lines 393--394
 []\OT1/ppl/b/n/12 Compression Rate: \OT1/ppl/m/n/12 By re-tain-ing only $10%$ o
 f the co-ef-fi-cients, we the-o-ret-i-cally achieve
  []
 
-[12 <./Assets/comparison_sat_img1.png>]
-<Assets/q4_resize1.jpg, id=268, 224.84pt x 224.84pt>
-File: Assets/q4_resize1.jpg Graphic file (type jpg)
-<use Assets/q4_resize1.jpg>
-Package pdftex.def Info: Assets/q4_resize1.jpg  used on input line 396.
-(pdftex.def)             Requested size: 140.92793pt x 140.9329pt.
-<Assets/q4_resize2.jpg, id=269, 224.84pt x 224.84pt>
-File: Assets/q4_resize2.jpg Graphic file (type jpg)
-<use Assets/q4_resize2.jpg>
-Package pdftex.def Info: Assets/q4_resize2.jpg  used on input line 400.
-(pdftex.def)             Requested size: 140.92793pt x 140.9329pt.
-<Assets/q4_blur_noise.jpg, id=270, 3035.34pt x 4047.12pt>
-File: Assets/q4_blur_noise.jpg Graphic file (type jpg)
-<use Assets/q4_blur_noise.jpg>
-Package pdftex.def Info: Assets/q4_blur_noise.jpg  used on input line 404.
-(pdftex.def)             Requested size: 140.92793pt x 187.85567pt.
-<Assets/q4_horizontal_flip.jpg, id=271, 3035.34pt x 4047.12pt>
-File: Assets/q4_horizontal_flip.jpg Graphic file (type jpg)
-<use Assets/q4_horizontal_flip.jpg>
-Package pdftex.def Info: Assets/q4_horizontal_flip.jpg  used on input line 409.
+[12 <./Assets/comparison_q3a.png> <./Assets/comparison_q3b.png> <./Assets/compa
+rison_sat_img1.png>] [13]
+<./Assets/q4_resize1.jpg, id=284, 224.84pt x 224.84pt>
+File: ./Assets/q4_resize1.jpg Graphic file (type jpg)
+<use ./Assets/q4_resize1.jpg>
+Package pdftex.def Info: ./Assets/q4_resize1.jpg  used on input line 415.
+(pdftex.def)             Requested size: 89.2546pt x 89.25511pt.
 
-(pdftex.def)             Requested size: 140.92793pt x 187.85567pt.
-<Assets/q4_vertical_flip.jpg, id=272, 3035.34pt x 4047.12pt>
-File: Assets/q4_vertical_flip.jpg Graphic file (type jpg)
-<use Assets/q4_vertical_flip.jpg>
-Package pdftex.def Info: Assets/q4_vertical_flip.jpg  used on input line 413.
-(pdftex.def)             Requested size: 140.92793pt x 187.85567pt.
-<Assets/q4_rotation.jpg, id=273, 3035.34pt x 4047.12pt>
-File: Assets/q4_rotation.jpg Graphic file (type jpg)
-<use Assets/q4_rotation.jpg>
-Package pdftex.def Info: Assets/q4_rotation.jpg  used on input line 417.
-(pdftex.def)             Requested size: 140.92793pt x 187.85567pt.
-<Assets/q4_shear_x.jpg, id=274, 3035.34pt x 4047.12pt>
-File: Assets/q4_shear_x.jpg Graphic file (type jpg)
-<use Assets/q4_shear_x.jpg>
-Package pdftex.def Info: Assets/q4_shear_x.jpg  used on input line 422.
-(pdftex.def)             Requested size: 140.92793pt x 187.85567pt.
-<Assets/q4_shear_y.jpg, id=275, 3035.34pt x 4047.12pt>
-File: Assets/q4_shear_y.jpg Graphic file (type jpg)
-<use Assets/q4_shear_y.jpg>
-Package pdftex.def Info: Assets/q4_shear_y.jpg  used on input line 426.
-(pdftex.def)             Requested size: 140.92793pt x 187.85567pt.
- [13] [14 <./Assets/q4_resize1.jpg> <./Assets/q4_resize2.jpg> <./Assets/q4_blur
-_noise.jpg> <./Assets/q4_horizontal_flip.jpg> <./Assets/q4_vertical_flip.jpg> <
-./Assets/q4_rotation.jpg> <./Assets/q4_shear_x.jpg> <./Assets/q4_shear_y.jpg>] 
-(hw2.bbl) [15] (hw2.aux)
+Underfull \hbox (badness 1831) in paragraph at lines 416--416
+[]\OT1/ppl/m/n/10.95 (a) |Re-size (Near-
+ []
+
+<./Assets/q4_resize2.jpg, id=285, 224.84pt x 224.84pt>
+File: ./Assets/q4_resize2.jpg Graphic file (type jpg)
+<use ./Assets/q4_resize2.jpg>
+Package pdftex.def Info: ./Assets/q4_resize2.jpg  used on input line 420.
+(pdftex.def)             Requested size: 89.2546pt x 89.25511pt.
+
+Underfull \hbox (badness 3439) in paragraph at lines 421--421
+[]\OT1/ppl/m/n/10.95 (b) |Re-size (Bicu-
+ []
+
+<./Assets/q4_blur_noise.jpg, id=286, 3035.34pt x 4047.12pt>
+File: ./Assets/q4_blur_noise.jpg Graphic file (type jpg)
+<use ./Assets/q4_blur_noise.jpg>
+Package pdftex.def Info: ./Assets/q4_blur_noise.jpg  used on input line 425.
+(pdftex.def)             Requested size: 89.2546pt x 118.99995pt.
+<./Assets/q4_horizontal_flip.jpg, id=287, 3035.34pt x 4047.12pt>
+File: ./Assets/q4_horizontal_flip.jpg Graphic file (type jpg)
+<use ./Assets/q4_horizontal_flip.jpg>
+Package pdftex.def Info: ./Assets/q4_horizontal_flip.jpg  used on input line 43
+0.
+(pdftex.def)             Requested size: 89.2546pt x 118.99995pt.
+<./Assets/q4_vertical_flip.jpg, id=288, 3035.34pt x 4047.12pt>
+File: ./Assets/q4_vertical_flip.jpg Graphic file (type jpg)
+<use ./Assets/q4_vertical_flip.jpg>
+Package pdftex.def Info: ./Assets/q4_vertical_flip.jpg  used on input line 435.
+
+(pdftex.def)             Requested size: 89.2546pt x 118.99995pt.
+<./Assets/q4_rotation.jpg, id=289, 3035.34pt x 4047.12pt>
+File: ./Assets/q4_rotation.jpg Graphic file (type jpg)
+<use ./Assets/q4_rotation.jpg>
+Package pdftex.def Info: ./Assets/q4_rotation.jpg  used on input line 440.
+(pdftex.def)             Requested size: 89.2546pt x 118.99995pt.
+<./Assets/q4_shear_x.jpg, id=290, 3035.34pt x 4047.12pt>
+File: ./Assets/q4_shear_x.jpg Graphic file (type jpg)
+<use ./Assets/q4_shear_x.jpg>
+Package pdftex.def Info: ./Assets/q4_shear_x.jpg  used on input line 445.
+(pdftex.def)             Requested size: 89.2546pt x 118.99995pt.
+<./Assets/q4_shear_y.jpg, id=291, 3035.34pt x 4047.12pt>
+File: ./Assets/q4_shear_y.jpg Graphic file (type jpg)
+<use ./Assets/q4_shear_y.jpg>
+Package pdftex.def Info: ./Assets/q4_shear_y.jpg  used on input line 450.
+(pdftex.def)             Requested size: 89.2546pt x 118.99995pt.
+[14 <./Assets/q4_resize1.jpg> <./Assets/q4_resize2.jpg> <./Assets/q4_blur_noise
+.jpg> <./Assets/q4_horizontal_flip.jpg> <./Assets/q4_vertical_flip.jpg> <./Asse
+ts/q4_rotation.jpg> <./Assets/q4_shear_x.jpg> <./Assets/q4_shear_y.jpg>]
+
+LaTeX Warning: Citation `fong2019occlusions' on page 15 undefined on input line
+ 470.
+
+[15] (hw2.bbl) [16] (hw2.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
-Package rerunfilecheck Info: File `hw2.out' has not changed.
-(rerunfilecheck)             Checksum: 4EBAA346447106E68C3BC5DAD61DDA5B;5260.
+
+
+LaTeX Warning: There were undefined references.
+
+
+Package rerunfilecheck Warning: File `hw2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `hw2.out':
+(rerunfilecheck)             Before: 4EBAA346447106E68C3BC5DAD61DDA5B;5260
+(rerunfilecheck)             After:  39B840EA873A32DBE1D88F9B09BCBF68;5363.
  ) 
 Here is how much of TeX's memory you used:
- 14048 strings out of 467871
- 223224 string characters out of 5414505
- 639673 words of memory out of 5000000
- 42638 multiletter control sequences out of 15000+600000
+ 14107 strings out of 467871
+ 225082 string characters out of 5414505
+ 640573 words of memory out of 5000000
+ 42683 multiletter control sequences out of 15000+600000
  661408 words of font info for 135 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,9n,79p,457b,605s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -787,9 +843,9 @@ Administrator/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt
 s/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/Administrator/AppData/Lo
 cal/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/Administrator
 /AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on hw2.pdf (15 pages, 31029189 bytes).
+Output written on hw2.pdf (16 pages, 31325429 bytes).
 PDF statistics:
- 358 PDF objects out of 1000 (max. 8388607)
- 99 named destinations out of 1000 (max. 500000)
- 338 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 383 PDF objects out of 1000 (max. 8388607)
+ 109 named destinations out of 1000 (max. 500000)
+ 348 words of extra memory for PDF output out of 10000 (max. 10000000)
 

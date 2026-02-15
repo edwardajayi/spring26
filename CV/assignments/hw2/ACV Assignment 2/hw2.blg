@@ -5,44 +5,46 @@ Reallocating 'name_of_file' (item size: 1) to 7 items.
 The style file: ieeetr.bst
 Reallocating 'name_of_file' (item size: 1) to 11 items.
 Database file #1: references.bib
-You've used 8 entries,
+Warning--I didn't find a database entry for "fong2019occlusions"
+You've used 15 entries,
             1876 wiz_defined-function locations,
-            535 strings with 4793 characters,
-and the built_in function-call counts, 2450 in all, are:
-= -- 269
-> -- 55
+            583 strings with 5957 characters,
+and the built_in function-call counts, 4615 in all, are:
+= -- 504
+> -- 112
 < -- 0
-+ -- 22
-- -- 14
-* -- 160
-:= -- 318
-add.period$ -- 9
-call.type$ -- 8
-change.case$ -- 8
++ -- 44
+- -- 29
+* -- 295
+:= -- 595
+add.period$ -- 17
+call.type$ -- 15
+change.case$ -- 14
 chr.to.int$ -- 0
-cite$ -- 8
-duplicate$ -- 129
-empty$ -- 241
-format.name$ -- 14
-if$ -- 613
+cite$ -- 15
+duplicate$ -- 253
+empty$ -- 449
+format.name$ -- 29
+if$ -- 1161
 int.to.chr$ -- 0
-int.to.str$ -- 8
-missing$ -- 7
-newline$ -- 28
-num.names$ -- 7
-pop$ -- 26
+int.to.str$ -- 15
+missing$ -- 15
+newline$ -- 50
+num.names$ -- 14
+pop$ -- 50
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 104
+skip$ -- 202
 stack$ -- 0
-substring$ -- 219
-swap$ -- 61
+substring$ -- 390
+swap$ -- 122
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 28
-width$ -- 9
-write$ -- 84
+while$ -- 51
+width$ -- 17
+write$ -- 156
+(There was 1 warning)

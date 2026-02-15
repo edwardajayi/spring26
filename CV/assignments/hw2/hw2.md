@@ -253,6 +253,7 @@ def count_touching_objects(image_path):
     plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
     plt.title(f"Watershed Count: {count}")
     plt.axis('off')
+    plt.savefig('output.png')
     plt.show()
     return count
 ```

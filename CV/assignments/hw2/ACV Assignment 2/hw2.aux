@@ -16,61 +16,76 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Separation of touching objects using the Watershed algorithm with optimized parameters ($\alpha =0.15$, 1 iteration). The algorithm correctly identified 13 objects.}}{3}{figure.caption.3}\protected@file@percent }
 \newlabel{fig:q1_watershed}{{2}{3}{Separation of touching objects using the Watershed algorithm with optimized parameters ($\alpha =0.15$, 1 iteration). The algorithm correctly identified 13 objects}{figure.caption.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Real World Experimentation}{3}{subsection.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Difficulties Faced \& Improvements}{3}{subsection.1.5}\protected@file@percent }
+\newlabel{fig:q1_clips}{{3a}{3}{Experiment 1: Clothes Clips (Inflated Count)}{figure.caption.4}{}}
+\newlabel{sub@fig:q1_clips}{{a}{3}{Experiment 1: Clothes Clips (Inflated Count)}{figure.caption.4}{}}
+\newlabel{fig:q1_objects}{{3b}{3}{Experiment 2: Diverse Objects (Correct Count)}{figure.caption.4}{}}
+\newlabel{sub@fig:q1_objects}{{b}{3}{Experiment 2: Diverse Objects (Correct Count)}{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Real-world results. (a) Clothes clips are over-counted due to internal separable lines. (b) Diverse objects (wallet, lock, etc.) are correctly segmented.}}{3}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:q1_realworld}{{3}{3}{Real-world results. (a) Clothes clips are over-counted due to internal separable lines. (b) Diverse objects (wallet, lock, etc.) are correctly segmented}{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Difficulties Faced \& Improvements}{4}{subsection.1.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.6}Other Real World Scenarios}{4}{subsection.1.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.7}Bonus: Evaluating Image-Based Object Counting on Video}{4}{subsection.1.7}\protected@file@percent }
 \citation{zuiderveld1994clahe}
 \citation{canny1986computational}
 \citation{duda1972use}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Finding lines on a chessboard}{5}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Goal}{5}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Methodology}{5}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Finding lines on a chessboard}{6}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Goal}{6}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Methodology}{6}{subsection.2.2}\protected@file@percent }
 \citation{duda1972use}
 \citation{duda1972use}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Experimentation \& Parameter Tuning}{6}{subsection.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Hough Transform Threshold}{6}{subsubsection.2.3.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Effect of Hough Transform threshold on line detection quality.}}{6}{table.caption.4}\protected@file@percent }
-\newlabel{tab:q2_threshold}{{2}{6}{Effect of Hough Transform threshold on line detection quality}{table.caption.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Gaussian Blur Kernel}{6}{subsubsection.2.3.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Effect of Gaussian Blur kernel size.}}{6}{table.caption.5}\protected@file@percent }
-\newlabel{tab:q2_blur}{{3}{6}{Effect of Gaussian Blur kernel size}{table.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Results}{6}{subsection.2.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Detected dominant angles and rotation corrections for each test image.}}{6}{table.caption.6}\protected@file@percent }
-\newlabel{tab:q2_results}{{4}{6}{Detected dominant angles and rotation corrections for each test image}{table.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Lines detected (red) on each chessboard image using the Hough Transform~\cite  {duda1972use}.}}{7}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:q2_lines}{{3}{7}{Lines detected (red) on each chessboard image using the Hough Transform~\cite {duda1972use}}{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Straightened images after applying the computed rotation.}}{7}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:q2_straightened}{{4}{7}{Straightened images after applying the computed rotation}{figure.caption.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Real-World Experimentation}{7}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Experimentation \& Parameter Tuning}{7}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Hough Transform Threshold}{7}{subsubsection.2.3.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Effect of Hough Transform threshold on line detection quality.}}{7}{table.caption.5}\protected@file@percent }
+\newlabel{tab:q2_threshold}{{2}{7}{Effect of Hough Transform threshold on line detection quality}{table.caption.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Gaussian Blur Kernel}{7}{subsubsection.2.3.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Effect of Gaussian Blur kernel size.}}{7}{table.caption.6}\protected@file@percent }
+\newlabel{tab:q2_blur}{{3}{7}{Effect of Gaussian Blur kernel size}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Results}{7}{subsection.2.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Detected dominant angles and rotation corrections for each test image.}}{7}{table.caption.7}\protected@file@percent }
+\newlabel{tab:q2_results}{{4}{7}{Detected dominant angles and rotation corrections for each test image}{table.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Lines detected (red) on each chessboard image using the Hough Transform~\cite  {duda1972use}.}}{8}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:q2_lines}{{4}{8}{Lines detected (red) on each chessboard image using the Hough Transform~\cite {duda1972use}}{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Straightened images after applying the computed rotation.}}{8}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:q2_straightened}{{5}{8}{Straightened images after applying the computed rotation}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Real-World Experimentation}{8}{subsection.2.5}\protected@file@percent }
 \citation{duda1972use}
 \citation{canny1986computational}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Real-world test: Rubik's Cube top view. The algorithm detects the grid lines and corrects the tilt.}}{8}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:q2_realworld}{{5}{8}{Real-world test: Rubik's Cube top view. The algorithm detects the grid lines and corrects the tilt}{figure.caption.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Difficulties of the Naive Straightening Algorithm}{8}{subsection.2.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Real-world test: Rubik's Cube top view. The algorithm detects the grid lines and corrects the tilt.}}{9}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:q2_realworld}{{6}{9}{Real-world test: Rubik's Cube top view. The algorithm detects the grid lines and corrects the tilt}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Difficulties of the Naive Straightening Algorithm}{9}{subsection.2.6}\protected@file@percent }
 \citation{das2001deskewing}
 \citation{opencv_docs}
 \citation{oliveira2014medical}
 \citation{hillel2014lanes}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.7}Other Real-World Scenarios for Image Alignment}{9}{subsection.2.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Image Compression with Fourier Transform}{10}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Goal}{10}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Methodology}{10}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Discrete Fourier Transform (DFT)}{10}{subsubsection.3.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Compression Algorithm}{10}{subsubsection.3.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Results}{10}{subsection.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Compression results for the high-resolution satellite image (\texttt  {q3a.jpg}). Left: Original. Center: Log-Magnitude Spectrum. Right: Compressed image retaining top 10\% of coefficients.}}{11}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:q3_satellite}{{6}{11}{Compression results for the high-resolution satellite image (\texttt {q3a.jpg}). Left: Original. Center: Log-Magnitude Spectrum. Right: Compressed image retaining top 10\% of coefficients}{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Compression results for the low-frequency image (\texttt  {q3b.jpg}). The compressed version retains high fidelity even with significant data removal.}}{11}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:q3_lowfreq}{{7}{11}{Compression results for the low-frequency image (\texttt {q3b.jpg}). The compressed version retains high fidelity even with significant data removal}{figure.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Compression results for the newly acquired satellite image (\texttt  {sat\_img1.jpg}). The algorithm preserves large-scale features while achieving compression.}}{12}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:q3_sat_img1}{{8}{12}{Compression results for the newly acquired satellite image (\texttt {sat\_img1.jpg}). The algorithm preserves large-scale features while achieving compression}{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.7}Other Real-World Scenarios for Image Alignment}{10}{subsection.2.7}\protected@file@percent }
+\citation{park20152d}
+\citation{gonzalez2018digital}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Image Compression with Fourier Transform}{11}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Goal}{11}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Methodology}{11}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Discrete Fourier Transform (DFT)}{11}{subsubsection.3.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Compression Algorithm}{11}{subsubsection.3.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Results}{11}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Compression results for the high-resolution satellite image (\texttt  {q3a.jpg}). Left: Original. Center: Log-Magnitude Spectrum. Right: Compressed image retaining top 10\% of coefficients.}}{12}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:q3_satellite}{{7}{12}{Compression results for the high-resolution satellite image (\texttt {q3a.jpg}). Left: Original. Center: Log-Magnitude Spectrum. Right: Compressed image retaining top 10\% of coefficients}{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Compression results for the low-frequency image (\texttt  {q3b.jpg}). The compressed version retains high fidelity even with significant data removal.}}{12}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:q3_lowfreq}{{8}{12}{Compression results for the low-frequency image (\texttt {q3b.jpg}). The compressed version retains high fidelity even with significant data removal}{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Compression results for the newly acquired satellite image (\texttt  {sat\_img1.jpg}). The algorithm preserves large-scale features while achieving compression.}}{12}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:q3_sat_img1}{{9}{12}{Compression results for the newly acquired satellite image (\texttt {sat\_img1.jpg}). The algorithm preserves large-scale features while achieving compression}{figure.caption.13}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Observations}{12}{subsubsection.3.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Data Augmentation}{13}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Methodology}{13}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Results}{13}{subsection.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Data augmentation results applied to \texttt  {2a.jpg}.}}{14}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:q4_results}{{9}{14}{Data augmentation results applied to \texttt {2a.jpg}}{figure.caption.13}{}}
+\citation{shorten2019survey}
+\citation{simard2003best}
+\citation{shorten2019survey}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Data Augmentation}{14}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Methodology}{14}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Results}{14}{subsection.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Data augmentation results applied to \texttt  {2a.jpg}.}}{14}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:q4_results}{{10}{14}{Data augmentation results applied to \texttt {2a.jpg}}{figure.caption.14}{}}
+\citation{fong2019occlusions}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Validity for Face Recognition}{15}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Other Transforms}{15}{subsection.4.4}\protected@file@percent }
 \bibstyle{ieeetr}
+\citation{*}
 \bibdata{references}
 \bibcite{canny1986computational}{1}
 \bibcite{beucher1979watersheds}{2}
@@ -80,5 +95,11 @@
 \bibcite{opencv_docs}{6}
 \bibcite{oliveira2014medical}{7}
 \bibcite{hillel2014lanes}{8}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Bonus: Validity for Face Recognition}{15}{subsection.4.3}\protected@file@percent }
-\gdef \@abspage@last{15}
+\bibcite{park20152d}{9}
+\bibcite{gonzalez2018digital}{10}
+\bibcite{shorten2019survey}{11}
+\bibcite{simard2003best}{12}
+\bibcite{cooley1965algorithm}{13}
+\bibcite{fan2026crack}{14}
+\bibcite{krizhevsky2012imagenet}{15}
+\gdef \@abspage@last{16}

@@ -5,6 +5,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath, amssymb, amsfonts}
 \usepackage{graphicx}
+\usepackage{grffile}  % handle paths with spaces (e.g. "ACV Assignment 2")
 \usepackage{hyperref}
 \usepackage{enumerate}
 \usepackage{mathpazo}
@@ -44,8 +45,8 @@
 \author{\textbf{Name:} Edward Ajayi \\ \textbf{Andrew ID:} eaajayi \\ \textbf{Semester:} Spring 2026}
 \date{\textbf{Date:} \today}
 
-% Set the graphics path to the Assets folder
-\graphicspath{{Assets/}}
+% Graphics path: compile from the folder containing hw2.tex; keep Q3/Q4 images in Assets/
+\graphicspath{{./Assets/}}
 
 \begin{document}
 
@@ -101,10 +102,28 @@ For touching objects (as seen in the provided dataset), the naive method fails b
 \end{figure}
 
 \subsection{Real World Experimentation}
-We performed a real-world experiment by capturing an image of plastic mechanical parts (servo horns) on a plain background (Figure \ref{fig:q1_results}).
+We performed two real-world experiments to test the robustness of our counting algorithm.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{q1_realworld_clips.png}
+        \caption{Experiment 1: Clothes Clips (Inflated Count)}
+        \label{fig:q1_clips}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{q1_realworld_objects.png}
+        \caption{Experiment 2: Diverse Objects (Correct Count)}
+        \label{fig:q1_objects}
+    \end{subfigure}
+    \caption{Real-world results. (a) Clothes clips are over-counted due to internal separable lines. (b) Diverse objects (wallet, lock, etc.) are correctly segmented.}
+    \label{fig:q1_realworld}
+\end{figure}
+
 \begin{itemize}
-    \item \textbf{Setup:} Objects placed on a white table, captured from a top-down perspective.
-    \item \textbf{Result:} The naive algorithm counted \textbf{7} objects (distinct shapes). The Watershed algorithm (Figure \ref{fig:q1_watershed}) was required to correctly count \textbf{13} objects, handling the touching and overlapping parts effectively.
+    \item \textbf{Experiment 1 (Clips):} We tested the algorithm on clothes clips (Figure \ref{fig:q1_clips}). The result showed an inflated count. This is likely because the clips have a discernible separable line in the middle (the metal spring mechanism), which the edge detector interprets as a boundary, causing the algorithm to split a single object into two.
+    \item \textbf{Experiment 2 (Diverse Objects):} We tested on a set of distinct objects including a wallet, lock, and case (Figure \ref{fig:q1_objects}). Here, the algorithm performed correctly. Unlike the clips, these objects have solid, uniform shapes without strong internal edges, allowing the Watershed algorithm to segment them accurately.
 \end{itemize}
 
 \subsection{Difficulties Faced \& Improvements}
@@ -112,7 +131,7 @@ The naive counting algorithm faced several challenges in the real-world scenario
 \begin{enumerate}
     \item \textbf{Touching Objects:} The naive method treats touching objects as a single contour. \textit{Improvement:} Use Watershed algorithm or morphological erosion to separate them.
     \item \textbf{Shadows:} Strong lighting created shadows interpreted as extra edges. \textit{Improvement:} Use diffuse lighting or background subtraction algorithms.
-    \item \textbf{Reflections:} Shiny plastic parts created "holes" in the edge map. \textit{Improvement:} Use polarizing filters or hole-filling morphological operations (Closing).
+    \item \textbf{Reflections:} Shiny plastic parts created ``holes'' in the edge map. \textit{Improvement:} Use polarizing filters or hole-filling morphological operations (Closing).
 \end{enumerate}
 
 \subsection{Other Real World Scenarios}
@@ -125,7 +144,7 @@ Counting objects is useful in various domains:
 \end{itemize}
 
 \subsection{Bonus: Evaluating Image-Based Object Counting on Video}
-We applied the naive object counting pipeline to a video sequence (\texttt{bonus\_output.mp4}) containing 3--5 objects.
+We applied the naive object counting pipeline to a video sequence (\texttt{Assets/bonus\_output.mp4}) containing 3--5 objects.
 \begin{itemize}
     \item \textbf{Observations:} The count fluctuates significantly as objects move or lighting changes. The count is rarely stable.
     \item \textbf{Limitations Identified:}
@@ -173,7 +192,7 @@ We implemented a geometric computer vision pipeline consisting of the following 
         -\beta & \alpha & \beta c_x + (1-\alpha)c_y
         \end{bmatrix}
     \end{equation}
-    where $\alpha = \cos \phi$ and $\beta = \sin \phi$. We used bilinear interpolation (\texttt{cv2.INTER\_LINEAR}) and edge replication (\texttt{cv2.BORDER\_REPLICATE}) to warp the image.
+    where $\alpha = \cos \phi$ and $\beta = \sin \phi$. We used bilinear interpolation and edge replication to warp the image.
 \end{enumerate}
 
 \subsection{Experimentation \& Parameter Tuning}
@@ -326,7 +345,7 @@ The goal of this section is to implement a lossy image compression algorithm usi
 The fundamental principle of Fourier-based compression is that most of the "energy" (visual information) in a natural image is concentrated in the low-frequency components. By transforming the image to the frequency domain, we can keep only the coefficients with the highest magnitudes and discard the rest.
 
 \subsubsection{Discrete Fourier Transform (DFT)}
-For an image $f(x,y)$ of size $M \times N$, the 2D DFT is defined as:
+For an image $f(x,y)$ of size $M \times N$, the 2D DFT ~\cite{park20152d} is defined as:
 \begin{equation}
     F(u,v) = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} f(x,y) e^{-j 2\pi (ux/M + vy/N)}
 \end{equation}
@@ -336,7 +355,7 @@ where $F(u,v)$ is the complex frequency spectrum. The magnitude spectrum $|F(u,v
 We implemented the following pipeline:
 \begin{enumerate}
     \item \textbf{FFT Computation:} Compute the 2D FFT of the grayscale image and shift the zero-frequency component to the center.
-    \item \textbf{Thresholding:} Calculate the magnitude of all frequency coefficients. We apply a "hard threshold" where we retain only the top $k\%$ of coefficients (e.g., $10\%$) with the largest magnitudes. All other coefficients are set to zero.
+    \item \textbf{Thresholding:} Calculate the magnitude of all frequency coefficients. We apply a ``hard threshold'' where we retain only the top $k\%$ of coefficients (e.g., $10\%$) with the largest magnitudes. All other coefficients are set to zero.
     \item \textbf{Reconstruction:} Apply the Inverse FFT (IFFT) to the filtered spectrum to recover the spatial domain image.
 \end{enumerate}
 
@@ -347,30 +366,30 @@ We tested the algorithm on two distinct images from the \texttt{q3\_data} datase
     \item \textbf{Low-Frequency Image (\texttt{q3b.jpg}):} A simpler image with smoother transitions.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=\textwidth]{comparison_q3a.png}
+    \includegraphics[width=0.9\textwidth]{comparison_q3a.png}
     \caption{Compression results for the high-resolution satellite image (\texttt{q3a.jpg}). Left: Original. Center: Log-Magnitude Spectrum. Right: Compressed image retaining top 10\% of coefficients.}
     \label{fig:q3_satellite}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=\textwidth]{comparison_q3b.png}
+    \includegraphics[width=0.9\textwidth]{comparison_q3b.png}
     \caption{Compression results for the low-frequency image (\texttt{q3b.jpg}). The compressed version retains high fidelity even with significant data removal.}
     \label{fig:q3_lowfreq}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=\textwidth]{comparison_sat_img1.png}
+    \includegraphics[width=0.9\textwidth]{comparison_sat_img1.png}
     \caption{Compression results for the newly acquired satellite image (\texttt{sat\_img1.jpg}). The algorithm preserves large-scale features while achieving compression.}
     \label{fig:q3_sat_img1}
 \end{figure}
 
 \subsubsection{Observations}
 \begin{itemize}
-    \item \textbf{Satellite Image:} The compressed image successfully preserves major structural features like coastlines and roads. However, filtering out high frequencies introduces "ringing" artifacts (Gibbs phenomenon) around sharp edges and blurs fine texture (e.g., waves or vegetation).
+    \item \textbf{Satellite Image:} The compressed image successfully preserves major structural features like coastlines and roads. However, filtering out high frequencies introduces ``ringing'' artifacts (Gibbs phenomenon~\cite{gonzalez2018digital}) around sharp edges and blurs fine texture (e.g., waves or vegetation).
     \item \textbf{Compression Rate:} By retaining only $10\%$ of the coefficients, we theoretically achieve a significant reduction in data size, though the actual file size depends on the encoding of the sparse matrix.
 \end{itemize}
 
@@ -378,60 +397,65 @@ We tested the algorithm on two distinct images from the \texttt{q3\_data} datase
 \section{Data Augmentation}
 
 \subsection{Methodology}
-Data augmentation increases dataset diversity to improve model robustness. We implemented five types of augmentations:
+Data augmentation increases dataset diversity to improve model robustness~\cite{shorten2019survey}. We implemented five types of augmentations:
 \begin{itemize}
     \item \textbf{Resizing:} Scaling images to $224 \times 224$ using Nearest Neighbor (fast, blocky) and Bicubic (smooth) interpolation.
     \item \textbf{Flipping:} Mirroring images horizontally (left-right) and vertically (up-down).
     \item \textbf{Blur/Noise:} Applying Gaussian Blur to simulate focus issues.
     \item \textbf{Rotation:} Rotating the image by $30^\circ$ using an affine transform.
-    \item \textbf{Shear:} Applying a shear transformation along the X and Y axes to simulate perspective shifts.
+    \item \textbf{Shear:} Applying a shear transformation along the X and Y axes to simulate perspective shifts~\cite{simard2003best}.
 \end{itemize}
 
 \subsection{Results}
 We applied these augmentations to the chessboard image (\texttt{2a.jpg}). The results are shown in Figure~\ref{fig:q4_results}.
 
-\begin{figure}[H]
+\begin{figure}[!ht]
     \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{q4_resize1.jpg}
+    \begin{subfigure}[b]{0.19\textwidth}
+        \includegraphics[width=\linewidth]{q4_resize1.jpg}
         \caption{Resize (Nearest)}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{q4_resize2.jpg}
+    \hfill
+    \begin{subfigure}[b]{0.19\textwidth}
+        \includegraphics[width=\linewidth]{q4_resize2.jpg}
         \caption{Resize (Bicubic)}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{q4_blur_noise.jpg}
+    \hfill
+    \begin{subfigure}[b]{0.19\textwidth}
+        \includegraphics[width=\linewidth]{q4_blur_noise.jpg}
         \caption{Gaussian Blur}
     \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.19\textwidth}
+        \includegraphics[width=\linewidth]{q4_horizontal_flip.jpg}
+        \caption{H-Flip}
+    \end{subfigure}
     
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{q4_horizontal_flip.jpg}
-        \caption{Horizontal Flip}
+    \begin{subfigure}[b]{0.19\textwidth}
+        \includegraphics[width=\linewidth]{q4_vertical_flip.jpg}
+        \caption{V-Flip}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{q4_vertical_flip.jpg}
-        \caption{Vertical Flip}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{q4_rotation.jpg}
+    \hfill
+    \begin{subfigure}[b]{0.19\textwidth}
+        \includegraphics[width=\linewidth]{q4_rotation.jpg}
         \caption{Rotation ($30^\circ$)}
     \end{subfigure}
-    
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{q4_shear_x.jpg}
+    \hfill
+    \begin{subfigure}[b]{0.19\textwidth}
+        \includegraphics[width=\linewidth]{q4_shear_x.jpg}
         \caption{Shear X}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{q4_shear_y.jpg}
+    \hfill
+    \begin{subfigure}[b]{0.19\textwidth}
+        \includegraphics[width=\linewidth]{q4_shear_y.jpg}
         \caption{Shear Y}
     \end{subfigure}
     \caption{Data augmentation results applied to \texttt{2a.jpg}.}
     \label{fig:q4_results}
 \end{figure}
 
-\subsection{Bonus: Validity for Face Recognition}
-When applying augmentations to a dataset labeled "Face", we must consider if the transformation preserves the label's semantic validity.
+\subsection{Validity for Face Recognition}
+When applying augmentations to a dataset labeled ``Face'', we must consider if the transformation preserves the label's semantic validity~\cite{shorten2019survey}.
 \begin{itemize}
     \item \textbf{Horizontal Flip is VALID:} A mirrored face is semantically identical to a real face (humans are roughly symmetric).
     \item \textbf{Vertical Flip is INVALID:} Upside-down faces are rare in natural environments. Validating on them might force the network to learn incorrect spatial relationships (e.g., eyes below mouth).
@@ -439,8 +463,16 @@ When applying augmentations to a dataset labeled "Face", we must consider if the
     \item \textbf{Gaussian Blur is VALID:} Simulates out-of-focus images, improving robustness.
     \item \textbf{Shear is PARTIALLY VALID:} Slight perspective changes are good, but extreme shear distorts facial proportions unnaturally.
 \end{itemize}
+\subsection{Other Transforms}
+Two other transforms not included in the starter code that are highly relevant for face recognition:
+\begin{itemize}
+    \item \textbf{Photometric Distortion (Brightness/Contrast):} Adjusting brightness and contrast is crucial~cite{sun2005geometric} because face recognition systems must be robust to varying lighting conditions, such as shadows, indoor/outdoor transitions, and overexposure.
+    \item \textbf{Random Occlusion (Cutout):} Simulating partial occlusion~\cite{fong2019occlusions} (e.g., by masking out random rectangular regions) is essential for training models to recognize faces that may be partially covered by accessories like sunglasses, medical masks, or microphones.
+\end{itemize}
 
+\newpage
 \bibliographystyle{ieeetr}
+\nocite{*}
 \bibliography{references}
 
 \end{document}
