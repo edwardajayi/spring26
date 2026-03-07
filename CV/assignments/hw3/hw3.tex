@@ -1,0 +1,354 @@
+\documentclass[12pt]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{mathpazo}
+
+% --- Document Information ---
+\title{18-799 Applied Computer Vision \\\\ Homework 3}
+\author{\textbf{Name:} Edward Ajayi \\ \textbf{Andrew ID:} eaajayi \\ \textbf{Semester: }Spring 2026} % Enter your name here
+\date{\textbf{Date: }\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\subsection*{Q1.1 Correspondences (10 points)}
+
+Let $x_1$ be a set of points in an image and $x_2$ be the set of corresponding points in an image taken by another camera. Suppose there exists a homography $H$ such that
+
+\begin{equation}
+x_1^i = H x_2^i \qquad (i \in \{1,\dots,N\})
+\end{equation}
+
+where $x_1^i = [x_1^i \;\; y_1^i \;\; 1]^T$ are in homogeneous coordinates, $x_1^i \in x_1$, and $H$ is a $3 \times 3$ matrix. For each point pair, this relation can be rewritten as
+
+\begin{equation}
+A_i h = 0
+\end{equation}
+
+where $h$ is a column vector reshaped from $H$, and $A_i$ is a matrix with elements derived from the points $x_1^i$ and $x_2^i$. This can help calculate $H$ from the given point correspondences.
+
+\begin{enumerate}
+\item How many degrees of freedom does $h$ have? \hfill (1 point)
+
+\item How many point pairs are required to solve $h$? \hfill (1 point)
+
+\item Derive $A_i$. \hfill (4 points)
+
+\item When solving $Ah = 0$, in essence you're trying to find the $h$ that exists in the null space of $A$. What that means is that there would be some non-trivial solution for $h$ such that the product $Ah$ turns out to be $0$. What would be a trivial solution for $h$? Is the matrix $A$ full rank? Why/Why not? What impact will it have on the singular values? What impact will it have on the singular vectors? \hfill (4 points)
+
+\end{enumerate}
+
+\subsection*{Solution}
+
+\begin{enumerate}
+
+\item \textbf{Degrees of Freedom of $h$}
+
+The homography matrix
+
+\[
+H =
+\begin{bmatrix}
+h_1 & h_2 & h_3 \\
+h_4 & h_5 & h_6 \\
+h_7 & h_8 & h_9
+\end{bmatrix}
+\]
+
+contains $9$ parameters. However, homographies are defined up to a scale in homogeneous coordinates, meaning that multiplying $H$ by any non-zero scalar produces the same transformation. Therefore one parameter is redundant.
+
+\[
+\text{Degrees of freedom} = 9 - 1 = 8
+\]
+
+\textbf{Answer:} $8$
+
+\item \textbf{Number of Point Pairs Required}
+
+Each point correspondence provides two independent linear equations. Since $h$ has $8$ degrees of freedom, we require at least
+
+\[
+\frac{8}{2} = 4
+\]
+
+point correspondences.
+
+\textbf{Answer:} $4$ point pairs.
+
+\item \textbf{Derivation of $A_i$}
+
+Let the corresponding points be
+
+\[
+x_1^i = (x_1, y_1, 1)^T, \qquad
+x_2^i = (x_2, y_2, 1)^T
+\]
+
+and define
+
+\[
+h =
+[h_1,h_2,h_3,h_4,h_5,h_6,h_7,h_8,h_9]^T
+\]
+
+From the homography relation
+
+\[
+x_1^i = Hx_2^i
+\]
+
+we obtain two independent linear equations that can be written in matrix form as
+
+\[
+A_i h = 0
+\]
+
+where
+
+\[
+A_i =
+\begin{bmatrix}
+-x_2 & -y_2 & -1 & 0 & 0 & 0 & x_1x_2 & x_1y_2 & x_1 \\
+0 & 0 & 0 & -x_2 & -y_2 & -1 & y_1x_2 & y_1y_2 & y_1
+\end{bmatrix}
+\]
+
+Each correspondence contributes two rows to the matrix $A$.
+
+\item \textbf{Solving $Ah = 0$}
+
+The equation $Ah = 0$ is solved by finding the null space of $A$.
+
+\textbf{Trivial solution:}
+
+\[
+h = 0
+\]
+
+This solution is trivial and not useful.
+
+\textbf{Rank of $A$:}
+
+For a non-trivial solution to exist, the matrix $A$ must not be full rank. Ideally,
+
+\[
+\text{rank}(A) = 8
+\]
+
+since $h$ has $9$ elements and the solution lies in the null space.
+
+\textbf{Impact on singular values:}
+
+Using Singular Value Decomposition (SVD),
+
+\[
+A = U\Sigma V^T
+\]
+
+there will be one singular value that is zero (or very close to zero).
+
+\textbf{Impact on singular vectors:}
+
+The solution for $h$ is the right singular vector corresponding to the smallest singular value of $A$.
+
+\[
+h = v_9
+\]
+
+where $v_9$ is the last column of $V$.
+
+\end{enumerate}
+
+\newpage
+\section*{Q2.1 FAST Detector}
+
+The FAST (Features from Accelerated Segment Test) detector differs from the Harris corner detector in the way corners are identified. The Harris detector is a gradient-based method that computes image gradients in the horizontal and vertical directions and forms a second-moment matrix (structure tensor) to measure intensity variation in local neighborhoods. A point is considered a corner when the intensity changes significantly in both directions \cite{harris1988combined,szeliski2022computer}.
+
+In contrast, the FAST detector uses a simple intensity comparison test. For a candidate pixel $p$, the algorithm examines 16 pixels lying on a circle of radius 3 around the pixel. If a contiguous set of these pixels are all significantly brighter or darker than $p$ by a threshold $t$, the pixel is classified as a corner \cite{rosten2006machine}.
+
+In terms of computational performance, FAST is significantly faster than the Harris detector. Harris requires gradient computation, convolution operations, and matrix calculations, whereas FAST relies only on simple intensity comparisons and early rejection tests. As a result, FAST is well suited for real-time applications such as visual SLAM and mobile vision systems.
+
+\section*{Q2.2 BRIEF Descriptor}
+
+The BRIEF (Binary Robust Independent Elementary Features) descriptor differs from filter bank based descriptors in how image patches are represented. In filter bank approaches, multiple filters (such as Gaussian derivatives or oriented filters) are applied to an image patch, and the resulting continuous filter responses form a floating-point feature vector describing the region \cite{szeliski2022computer}.
+
+BRIEF instead represents an image patch using binary intensity comparisons between pairs of pixels within the patch. For each pair $(p_i, p_j)$, the descriptor assigns a bit value according to
+
+\[
+\tau(p_i,p_j) =
+\begin{cases}
+1 & \text{if } I(p_i) < I(p_j) \\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+Repeating this comparison for many pairs produces a binary string that serves as the feature descriptor \cite{calonder2010brief}.
+
+While filter bank responses could be used as descriptors, they produce higher-dimensional floating-point vectors and require more computation. BRIEF descriptors are designed to be compact and computationally efficient, enabling fast feature matching.
+
+\section*{Q2.3 Matching Methods}
+
+BRIEF descriptors represent feature points as binary strings. To match features between images, a common similarity measure used is the \textbf{Hamming distance}. The Hamming distance between two binary strings is defined as the number of bit positions at which the two strings differ \cite{hamming1950error}.
+
+To match interest points between two images, the following procedure can be used:
+
+\begin{enumerate}
+\item For each feature descriptor in the first image, compute the Hamming distance to all descriptors in the second image.
+\item Identify the \textbf{nearest neighbor}, which is the descriptor with the smallest Hamming distance.
+\item The pair with the minimum distance is selected as the best match.
+\end{enumerate}
+
+Hamming distance has several advantages over the Euclidean distance in this setting. Since BRIEF descriptors are binary, Hamming distance can be computed efficiently using bitwise XOR operations followed by a population count. This makes it significantly faster than Euclidean distance, which requires floating-point arithmetic. Additionally, binary descriptors require less memory storage, making them suitable for large-scale and real-time feature matching applications.
+
+\begin{thebibliography}{9}
+
+\bibitem{harris1988combined}
+C. Harris and M. Stephens,
+``A Combined Corner and Edge Detector,''
+\textit{Proceedings of the Alvey Vision Conference}, 1988.
+
+\bibitem{rosten2006machine}
+E. Rosten and T. Drummond,
+``Machine Learning for High-Speed Corner Detection,''
+\textit{European Conference on Computer Vision (ECCV)}, 2006.
+
+\bibitem{calonder2010brief}
+M. Calonder, V. Lepetit, C. Strecha, and P. Fua,
+``BRIEF: Binary Robust Independent Elementary Features,''
+\textit{European Conference on Computer Vision (ECCV)}, 2010.
+
+\bibitem{hamming1950error}
+R. Hamming,
+``Error Detecting and Error Correcting Codes,''
+\textit{Bell System Technical Journal}, 1950.
+
+\bibitem{szeliski2022computer}
+R. Szeliski,
+\textit{Computer Vision: Algorithms and Applications},
+Springer, 2nd Edition, 2022.
+
+\end{thebibliography}
+
+\newpage
+\section*{Q2.4 Feature Matching}
+
+See attached figure: feature matching visualization between \texttt{cv\_cover.jpg} and \texttt{cv\_desk.png}.
+
+The implementation uses the provided helper functions:
+\begin{enumerate}
+\item Convert both images to grayscale.
+\item Detect FAST corners using \texttt{corner\_detection} with $\sigma = 0.15$.
+\item Compute BRIEF descriptors using \texttt{computeBrief}.
+\item Match descriptors using \texttt{briefMatch} with ratio $= 0.65$.
+\end{enumerate}
+
+\section*{Q2.5 BRIEF and Rotations}
+
+See attached histogram and three orientation visualizations (30\textdegree, 90\textdegree, 180\textdegree).
+
+\textbf{Explanation:} The BRIEF descriptor is \textbf{not rotation-invariant}. BRIEF computes binary comparisons between fixed pixel pairs at pre-determined relative locations within a patch. When the image is rotated, these fixed offsets no longer correspond to the same visual content—the pixels being compared are now sampled from entirely different parts of the scene.
+
+As a result, the number of correct matches drops sharply with increasing rotation angle. The histogram shows that match count is highest at $0\degree$ (identical image) and decreases as the rotation angle increases. Unlike descriptors such as ORB (which estimates a dominant patch orientation and compensates for rotation), BRIEF deliberately sacrifices rotation invariance in exchange for extreme computational efficiency.
+
+Small rotations (e.g., 10\textdegree) may still produce some matches because the pixel content changes only slightly, but beyond approximately 20--30\textdegree, the descriptor becomes unreliable.
+
+\section*{Q2.9 HarryPotterize}
+
+See attached composite image.
+
+\textbf{Step 4 discussion --- Why does the warped image not fill the book?}
+
+The Harry Potter cover image (\texttt{hp\_cover.jpg}) has a different aspect ratio ($200 \times 295$ pixels) compared to the computer vision textbook cover (\texttt{cv\_cover.jpg}, $350 \times 440$ pixels). When we compute the homography from \texttt{cv\_cover} to its location on the desk and then apply that same transformation to the HP cover, the HP cover gets warped into a region sized for the CV cover. Since the HP cover is smaller and has different proportions, it does not perfectly fill the book-shaped region.
+
+\textbf{Fix:} Resize \texttt{hp\_cover.jpg} to match the dimensions of \texttt{cv\_cover.jpg} (i.e., $350 \times 440$) \emph{before} warping. This ensures the template fills the entire target region on the desk image.
+
+\section*{Q3.1 AR Video}
+
+See attached \texttt{results/ar.avi}.
+
+The AR pipeline processes each frame by:
+\begin{enumerate}
+\item Cropping the AR source frame centrally to match the book cover's aspect ratio.
+\item Matching FAST/BRIEF features between the reference book cover and the current book video frame.
+\item Computing a homography via RANSAC.
+\item Warping and compositing the AR frame onto the detected book region.
+\end{enumerate}
+
+\newpage
+\section*{Q4.1 Image Classification}
+
+\subsection*{Part A --- Dataset Setup}
+
+See attached \texttt{results/dataset\_grid.png} showing 4 images per class. The dataset contains 15 face images and 15 no-face images, all pre-processed to $256 \times 256$ pixels.
+
+\subsection*{Part B --- Data Augmentation}
+
+\textbf{Factor 1: Brightness} (shift of $\pm 40$ pixel intensity)
+\begin{itemize}
+\item \textbf{Relevance:} Faces are captured under varying lighting conditions—indoor, outdoor, shadows, direct sunlight. Simulating brightness variation makes the classifier robust to illumination changes that are common in real-world face images.
+\item \textbf{OpenCV function:} \texttt{np.clip(img.astype(np.int16) + shift, 0, 255).astype(np.uint8)}
+\item \textbf{Parameter range:} Uniform random shift in $[-40, +40]$ intensity levels.
+\end{itemize}
+
+\textbf{Factor 2: Rotation} ($\pm 15\degree$)
+\begin{itemize}
+\item \textbf{Relevance:} People naturally tilt their heads when being photographed, and cameras may be held at slight angles. Simulating small rotations helps the classifier generalize to non-perfectly-upright face images.
+\item \textbf{OpenCV function:} \texttt{cv2.warpAffine} with \texttt{cv2.getRotationMatrix2D}
+\item \textbf{Parameter range:} Uniform random angle in $[-15\degree, +15\degree]$.
+\end{itemize}
+
+\textbf{Factor that would hurt BRIEF:} Large-scale rotation (e.g., $90\degree$ or $180\degree$) would hurt BRIEF descriptor matching because BRIEF is not rotation-invariant. It compares fixed pixel pairs relative to the patch orientation, so large rotations completely change the binary descriptor, leading to meaningless feature vectors.
+
+See attached \texttt{results/augmentation\_examples.png}.
+
+\subsection*{Part C --- Conceptual Questions}
+
+Answered directly in the comment blocks of \texttt{classify.py}:
+
+\begin{enumerate}
+\item \textbf{Why resize?} FAST detects corners at a fixed scale. Different image sizes would yield different keypoint counts for identical content, making feature vectors incomparable.
+\item \textbf{Why not variable-size?} Classifiers require fixed-length input. Mean pooling collapses $(K', 256)$ to a single $(256,)$ vector.
+\item \textbf{What is lost?} Spatial layout information---which descriptor came from where---and relationships between keypoints.
+\item \textbf{How does k-NN work?} Computes Euclidean distances to all training vectors, selects the 5 closest, and predicts via majority vote. Appropriate for small datasets since it makes no distributional assumptions.
+\end{enumerate}
+
+\subsection*{Part D --- Implementation}
+
+Pipeline documentation:
+
+\begin{center}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+TARGET\_SIZE & $256 \times 256$ \\
+Factor 1 & Brightness ($\pm 40$) \\
+Factor 2 & Rotation ($\pm 15\degree$) \\
+Images before augmentation & 30 \\
+Images after augmentation & 90 \\
+Descriptor dim $D$ & 256 \\
+Feature matrix shape & $(90, 256)$ \\
+Train / Test split & 80\% / 20\% \\
+Classifier & k-NN \\
+Key hyperparameter & $k = 5$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Part D5 --- Test on Own Image}
+
+[Include test image here after running \texttt{predict\_single\_image}]
+
+\subsection*{Part E --- Results}
+
+[Include accuracy, precision, recall, F1 score, and confusion matrix from \texttt{results/confusion\_matrix.png} after running the full pipeline]
+
+\end{document}

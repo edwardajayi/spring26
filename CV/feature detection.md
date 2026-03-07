@@ -765,3 +765,254 @@ Test your understanding with these 20 practice questions. Try to answer them bef
 18. **b)** A Mexican hat.
 19. **c)** Smooth the image with a Gaussian (to reduce noise before differentiating).
 20. **b)** The Gaussian sigma ($\sigma$). Larger sigma = coarser scale (blurry edges), Smaller sigma = fine scale.
+
+---
+
+# Feature Detection (Corners)
+
+While edge detection is useful, edges alone are often not enough to uniquely identify a location in an image (the "aperture problem"). A straight edge looks the same if you slide along it. To find unique points that can be reliably matched between images (like in stitching panoramas), we need **corners** or **interest points**.
+
+## Auto-correlation Function (Stability Metric)
+
+When identifying a feature, we want a location that looks different from its surroundings in *all* directions.
+We can measure this stability by comparing an image patch against itself shifted by a small amount $(u, v)$. This is known as **auto-correlation**.
+
+We define an error function $E(u, v)$, typically using the Sum of Squared Differences (SSD). This is often called the **Auto-correlation Surface** or simply **Energy** (because in signal processing, the "energy" of a signal is the sum of its squared values).
+
+$$
+E(u, v) = \sum_{x, y} w(x, y) [I(x+u, y+v) - I(x, y)]^2
+$$
+
+Where:
+- $u, v$: The shift in position.
+- $w(x, y)$: A window function (like a box filter, or more commonly a Gaussian) that weights the center pixels more heavily.
+- $I(x, y)$: The image intensity at position $(x, y)$.
+
+We want to find shifts $(u, v)$ that produce a **large** change in $E(u,v)$.
+- If $E$ remains small for all shifts: **Flat region**.
+- If $E$ is large for some shifts but small for others (e.g., along an edge): **Edge**.
+- If $E$ is huge for *all* shifts: **Corner (good feature)**.
+
+## The Math: Taylor Expansion & Structure Tensor
+
+To analyze how the error $E(u, v)$ changes with small shifts $(u, v)$, we use a **Taylor Series expansion**.
+
+### 1. Taylor Series Approximation
+The Taylor series lets us approximate a function's value near a point using its derivatives. For a 2D image $I(x, y)$, the intensity at a small shift $(u, v)$ is approximately:
+
+$$
+I(x+u, y+v) \approx I(x,y) + \frac{\partial I}{\partial x} u + \frac{\partial I}{\partial y} v
+$$
+
+Written more compactly using gradient notation ($I_x, I_y$):
+
+$$
+I(x+u, y+v) \approx I(x,y) + I_x u + I_y v
+$$
+
+### 2. Simplifying the Error Function
+Recall our error function (sum of squared differences):
+$$
+E(u, v) = \sum_{x, y} w(x, y) [\underbrace{I(x+u, y+v)}_{\text{shifted}} - \underbrace{I(x, y)}_{\text{original}}]^2
+$$
+
+Substitute the Taylor approximation into the bracket:
+
+$$
+\text{Difference} \approx (I(x,y) + I_x u + I_y v) - I(x,y) = I_x u + I_y v
+$$
+
+So the error function becomes:
+
+$$
+E(u, v) \approx \sum_{x,y} w(x,y) [I_x u + I_y v]^2
+$$
+
+### 3. Expanding the Square
+Let's expand the term $[I_x u + I_y v]^2$ algebraically:
+
+$$
+(I_x u + I_y v)^2 = I_x^2 u^2 + 2 I_x I_y u v + I_y^2 v^2
+$$
+
+Now, we group the terms by $u$ and $v$ to express this as a matrix multiplication. We want a form like $\mathbf{u}^T M \mathbf{u}$.
+
+$$
+\begin{bmatrix} u & v \end{bmatrix}
+\begin{bmatrix} A & B \\ B & C \end{bmatrix}
+\begin{bmatrix} u \\ v \end{bmatrix}
+= A u^2 + 2B uv + C v^2
+$$
+
+Matching our Expanded Square terms ($I_x^2 u^2 + 2 I_x I_y u v + I_y^2 v^2$) to the Matrix form:
+- $A$ (coefficient of $u^2$) $= I_x^2$
+- $B$ (half coefficient of $uv$) $= I_x I_y$
+- $C$ (coefficient of $v^2$) $= I_y^2$
+
+### 4. The Structure Tensor Matrix ($M$)
+Substituting these back into the summation, we get:
+
+$$
+E(u, v) \approx [u, v] \left( \sum_{x,y} w(x,y) \begin{bmatrix} I_x^2 & I_x I_y \\ I_x I_y & I_y^2 \end{bmatrix} \right) \begin{bmatrix} u \\ v \end{bmatrix}
+$$
+
+The matrix $M$ is the **Structure Tensor** (or Second Moment Matrix):
+
+$$
+M = \sum_{(x,y) \in W} w(x, y) \begin{bmatrix} I_x^2 & I_x I_y \\ I_x I_y & I_y^2 \end{bmatrix}
+$$
+
+**Alternate Notation ($S_{xx}, S_{yy}, S_{xy}$):**
+
+We can also write this using convolution with the window $w$ (typically a Gaussian $G_\sigma$). The matrix is often denoted as $H$:
+
+$$
+M = G_\sigma * \begin{bmatrix} I_x^2 & I_x I_y \\ I_x I_y & I_y^2 \end{bmatrix} = \begin{bmatrix} S_{xx} & S_{xy} \\ S_{xy} & S_{yy} \end{bmatrix}
+$$
+
+Where the components are derivatives squared and then smoothed:
+- $S_{xx} = G_\sigma * I_x^2$ (Weighted sum of $I_x^2$)
+- $S_{yy} = G_\sigma * I_y^2$ (Weighted sum of $I_y^2$)
+- $S_{xy} = G_\sigma * (I_x I_y)$ (Weighted sum of $I_x I_y$)
+
+> [!IMPORTANT]
+> **Structure Tensor vs. Hessian Matrix**
+> It is easy to confuse the Structure Tensor with the Hessian matrix because both are $2 \times 2$ matrices involving derivatives, but they are fundamentally different:
+>
+> 1.  **Structure Tensor ($M$):** Uses **products of first derivatives** ($I_x^2, I_y^2, I_x I_y$).
+>     -   It represents the dominant directions of the gradient in a *neighborhood* (window).
+>     -   It involves **smoothing** (summation/integration) over a window.
+>     -   Used for **corner detection**.
+>
+> 2.  **Hessian Matrix ($H$):** Uses **second derivatives** ($I_{xx}, I_{yy}, I_{xy}$).
+>     -   It represents the local curvature (peaks/valleys) at a *single point*.
+>     -   It does not necessarily involve window smoothing.
+>     -   Used for **blob detection** (determinant of Hessian) or finding extrema.
+>
+> **In short:** $M$ tells you about the *distribution* of edge directions in a patch. $H$ tells you about the *curvature* of the intensity surface.
+
+This matrix $M$ describes the shape of the error function ($E$) around the origin.
+
+## Interpreting Eigenvalues
+
+Since $M$ is a symmetric matrix, we can analyze its shape using its **eigenvalues** $\lambda_1$ and $\lambda_2$.
+The error function $E(u,v)$ effectively forms a "bowl" shape. The eigenvalues tell us how steep this bowl is in different directions (specifically, along the principal axes of the ellipse formed by the quadratic form).
+
+1.  **If both $\lambda_1$ and $\lambda_2$ are small:**
+    - The gradients are small everywhere in the window.
+    - The region is **FLAT**.
+    - $E(u, v)$ is almost constant (small change).
+
+2.  **If one eigenvalue is large ($\lambda_1 \gg \lambda_2$ or $\lambda_2 \gg \lambda_1$):**
+    - There is a strong gradient in one direction, but not the other.
+    - Example: A vertical edge has strong $I_x$ but weak $I_y$.
+    - The region is an **EDGE**.
+    - Sliding along the edge produces little error change (small eigenvalue), sliding across it produces large error (large eigenvalue).
+
+3.  **If both $\lambda_1$ and $\lambda_2$ are large:**
+    - There are strong gradients in *both* orthogonal directions.
+    - Typically a corner or a textured dot.
+    - The region is a **CORNER**.
+    - $E(u, v)$ increases rapidly in all directions.
+
+This analysis is the core principle behind the **Harris Corner Detector**.
+
+---
+
+## Harris Corner Detector Response Function ($R$)
+
+Directly computing eigenvalues ($\lambda_1, \lambda_2$) for every pixel is computationally expensive (requires square roots). The **Harris Corner Detector** uses a scoring function $R$ that approximates this classification using only the determinant and trace of $M$, which are much faster to compute.
+
+The Harris response $R$ is defined as:
+
+$$
+R = \det(M) - k \cdot (\text{trace}(M))^2
+$$
+
+Recall from linear algebra:
+- $\det(M) = \lambda_1 \lambda_2 = (I_x^2 I_y^2 - (I_x I_y)^2)$
+- $\text{trace}(M) = \lambda_1 + \lambda_2 = I_x^2 + I_y^2$
+
+The constant $k$ is an empirically determined sensitivity factor (usually $0.04 - 0.06$).
+
+**Classifying Regions using $R$:**
+
+1.  **Flat Region**: $|R|$ is small.
+    - Both $\lambda_1$ and $\lambda_2$ are small.
+2.  **Edge**: $R < 0$.
+    - One eigenvalue is large, the other is small.
+    - Since $\det(M)$ (product) is small but $(\text{trace}(M))^2$ (sum squared) is large, the negative term dominates.
+3.  **Corner**: $R > 0$ (Large Positive).
+    - Both $\lambda_1$ and $\lambda_2$ are large.
+    - The product $\lambda_1 \lambda_2$ is large enough to overcome the subtraction term.
+
+---
+
+## Shi-Tomasi Corner Detector
+
+Later, Shi and Tomasi proposed a simpler and often better scoring function, sometimes called "Good Features to Track". They explicitly check the *minimum* eigenvalue:
+
+$$
+R = \min(\lambda_1, \lambda_2)
+$$
+
+- If $R > \text{threshold}$, the region is a **Corner**.
+- This strictly enforces that *both* eigenvalues must be above a certain strength.
+
+---
+
+## Invariance Properties of Feature Detectors
+
+When we detect features, we want them to be stable even if the image changes. Let's look at how these detectors handle common transformations:
+
+### 1. Rotation Invariance? **YES**
+- **Explanation:** If you rotate the image, the corner structure remains the same. The ellipse described by $M$ rotates, but its shape (eigenvalues) remains unchanged.
+- **Result:** Harris/Shi-Tomasi will detect the same corners in a rotated image.
+
+### 2. Intensity (Brightness) Invariance? **MOSTLY YES**
+- **Affine Intensity Change ($I_{new} = a I + b$):**
+    - **Shift ($+b$):** **Invariant.** Derivatives ($I_x, I_y$) measure differences, so adding a constant $b$ cancels out.
+    - **Scale ($a I$):** **Not fully invariant.** Multiplying intensity by $a$ scales the derivatives, which scales the eigenvalues. If the image gets darker ($a < 1$), some corners might fall below the threshold.
+
+### 3. Scale Invariance? **NO**
+- **Explanation:** A "corner" at one scale might look like an "edge" or "curve" at a different scale.
+    - Imagine a zoomed-out view of a sharp triangle: It looks like a corner.
+    - Zoom efficiently in on one tip: The edge looks like a gentle curve.
+- **Result:** Harris and Shi-Tomasi are **NOT** scale invariant. If you resize the image, you may detect different features. To fix this, we need multi-scale approaches (like SIFT).
+
+---
+
+# Feature Detection Practice Quiz
+
+Here are 5 questions to test your understanding of the new material, with answers provided immediately.
+
+**1. Structure Tensor vs. Hessian**
+*   **Question:** The Structure Tensor ($M$) and the Hessian matrix ($H$) are both $2 \times 2$ matrices calculated from image derivatives. What is the key difference in their composition and purpose?
+*   **Answer & Explanation:**
+    *   **Structure Tensor ($M$):** Composed of **products of first derivatives** ($I_x^2, I_y^2, I_x I_y$) summed over a window. It describes the **distribution of gradient orientations** in a neighborhood (used for corners).
+    *   **Hessian ($H$):** Composed of **second derivatives** ($I_{xx}, I_{yy}, I_{xy}$). It describes the **local curvature** (peaks/valleys) at a single point (used for blobs).
+
+**2. Eigenvalues for an Edge**
+*   **Question:** If you compute the eigenvalues of the Structure Tensor for a specific window and find that $\lambda_1 \approx 0$ and $\lambda_2 \gg 0$ (one is very small, the other is large), what does this tell you about the image region?
+*   **Answer & Explanation:**
+    *   **The region is an Edge.**
+    *   A large eigenvalue ($\lambda_2$) means there is a strong gradient in one direction (across the edge).
+    *   A small eigenvalue ($\lambda_1$) means there is little to no change in the orthogonal direction (along the edge). This "ambiguity" in one direction is characteristic of an edge.
+
+**3. Taylor Series Approximation**
+*   **Question:** We approximate the intensity of a shifted pixel as $I(x+u, y+v) \approx I(x,y) + I_x u + I_y v$. This is a first-order Taylor expansion. What assumption are we making about the shift $(u, v)$ for this approximation to be valid?
+*   **Answer & Explanation:**
+    *   **Assumption:** The shift $(u, v)$ is **very small** (infinitesimal).
+    *   The Taylor series approximation becomes less accurate as the shift gets larger because higher-order terms (curvature, etc.) become significant. We ignore these higher-order terms for simplicity in the derivation.
+
+**4. The "Energy" Function Shape**
+*   **Question:** The error function $E(u,v)$ can be approximated as a quadratic form: $E(u,v) \approx [u, v] M [u, v]^T$. If you were to plot the contour where $E(u,v) = \text{constant}$, what geometric shape would you get?
+*   **Answer & Explanation:**
+    *   **An Ellipse.**
+    *   The matrix $M$ defines the shape of this ellipse. The **eigenvectors** of $M$ point along the major and minor axes of the ellipse, and the **eigenvalues** determine the length of these axes (specifically, the axes lengths are proportional to $1/\sqrt{\lambda}$).
+
+**5. Role of the Window Function $w(x,y)$**
+*   **Question:** In the definition of the Structure Tensor $M = \sum w(x,y) [\dots]$, why do we sum (or smooth) the gradients over a window $w(x,y)$ instead of just using the gradients at a single pixel?
+*   **Answer & Explanation:**
+    *   **To accumulate neighborhood statistics and reduce noise.**
+    *   A single pixel's gradient might be noisy or an outlier. by summing over a window (weighted by $w$), we get a robust estimate of the **dominant** gradient directions in that local area. If we didn't sum, the matrix would arguably have rank 1 everywhere (since $[I_x, I_y]^T [I_x, I_y]$ has rank 1), making it impossible to distinguish corners from edges cleanly.
